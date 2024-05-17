@@ -9,9 +9,8 @@ let database: Database
 ;(async () => {
     database = await sqlite.open({
         driver: sqlite3.Database,
-        filename: 'db.sqlite'
+        filename: 'shop.sqlite'
     })
-    await database.run('PRAGMA foreign_keys = ON')
 
     console.log('Connected to the SQLite database')
 })()
@@ -21,10 +20,13 @@ const app = express()
 app.use(cors())
 app.use(express.static(path.resolve(__dirname, 'dist')))
 
-app.get('/api', (_req, res) => {
-    res.send({ hello: 'world' })
+app.get('/products', async (_req, res) => {
+    let result = await database.all('SELECT * FROM products')
+    console.log(result)
+    res.json(result)
 })
 
-app.listen(3000, () => {
-    console.log('Server is running on http://localhost:3000')
+const port = process.env.PORT || 3000
+app.listen(port, () => {
+    console.log(`Server is listening on port ${port}`)
 })
