@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import Navbar from './Components/Navbar/Navbar'
+import Footer from './Components/Footer/Footer'
 
 interface Product {
     id: number
@@ -27,6 +28,7 @@ function App() {
     return (
         <>
             <Navbar />
+            <Footer />
             {products.map((product) => (
                 <div key={product.id}>
                     <h2>{product.name}</h2>

@@ -1,0 +1,70 @@
+import './Footer.css'
+import logo from '../../assets/logo.png'
+import { Link } from 'react-router-dom'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {
+    faInstagram,
+    faFacebook,
+    faPinterestP,
+    faXTwitter
+} from '@fortawesome/free-brands-svg-icons'
+
+const Footer = () => {
+    const getCurrentYear = () => {
+        return new Date().getFullYear()
+    }
+    return (
+        <div className="footer">
+            <div className="footer-logo">
+                <img src={logo} alt="" />
+            </div>
+            <div className="footer-socials">
+                <FontAwesomeIcon
+                    className="footer-socials-icon"
+                    icon={faInstagram}
+                />
+                <FontAwesomeIcon
+                    className="footer-socials-icon"
+                    icon={faFacebook}
+                />
+                <FontAwesomeIcon
+                    className="footer-socials-icon"
+                    icon={faPinterestP}
+                />
+                <FontAwesomeIcon
+                    className="footer-socials-icon"
+                    icon={faXTwitter}
+                />
+            </div>
+            <ul className="footer-links">
+                <li>
+                    <Link className="footer-link" to={'/'}>
+                        Home
+                    </Link>
+                </li>
+                <li>
+                    <Link className="footer-link" to={'/products'}>
+                        Products
+                    </Link>
+                </li>
+                <li>
+                    <Link className="footer-link" to={'/about'}>
+                        About
+                    </Link>
+                </li>
+                <li>
+                    <Link className="footer-link" to={'/contact'}>
+                        Contact
+                    </Link>
+                </li>
+            </ul>
+
+            <div className="footer-copyright">
+                <hr />
+                <p>Copyright @ {getCurrentYear()} - All Rights Reserved.</p>
+            </div>
+        </div>
+    )
+}
+
+export default Footer
