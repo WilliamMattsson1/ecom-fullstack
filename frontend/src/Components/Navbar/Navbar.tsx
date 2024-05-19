@@ -2,6 +2,11 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import './Navbar.css'
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCartShopping } from '@fortawesome/free-solid-svg-icons'
+
+import logo from '../../assets/logo.png'
+
 interface LinkItem {
     url: string
     text: string
@@ -23,7 +28,7 @@ const Navbar = () => {
         <nav>
             <div className="logo">
                 <Link to="/">
-                    <img src="" alt="logo" />
+                    <img src={logo} alt="logo" />
                 </Link>
             </div>
             <ul className={`nav-links ${isMenuOpen ? 'active' : ''}`}>
@@ -44,18 +49,23 @@ const Navbar = () => {
                     </Link>
                 </li>
             </ul>
-            <div className="cart-container">
-                <Link to="/cart">
-                    <img src="" alt="cart" />
-                </Link>
-            </div>
-            <div
-                className={`hamburger ${isMenuOpen ? 'active' : ''}`}
-                onClick={toggleMenu}
-            >
-                <span className="bar"></span>
-                <span className="bar"></span>
-                <span className="bar"></span>
+            <div className="right-container">
+                <div className="cart-container">
+                    <Link to="/cart">
+                        <FontAwesomeIcon
+                            className="cart-icon"
+                            icon={faCartShopping}
+                        />
+                    </Link>
+                </div>
+                <div
+                    className={`hamburger ${isMenuOpen ? 'active' : ''}`}
+                    onClick={toggleMenu}
+                >
+                    <span className="bar"></span>
+                    <span className="bar"></span>
+                    <span className="bar"></span>
+                </div>
             </div>
         </nav>
     )

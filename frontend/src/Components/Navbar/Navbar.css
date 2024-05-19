@@ -63,6 +63,17 @@ img {
     font-weight: 500;
 }
 
+.right-container {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.cart-icon {
+    color: black;
+    font-size: 26px;
+}
+
 .hamburger {
     display: none;
     cursor: pointer;
@@ -74,7 +85,7 @@ img {
     height: 3px;
     margin: 5px auto;
     transition: all 0.4s ease-in-out;
-    background-color: white;
+    background-color: black;
 }
 
 .login-link {
