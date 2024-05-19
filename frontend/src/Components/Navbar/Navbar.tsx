@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 import './Navbar.css'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -34,9 +34,14 @@ const Navbar = () => {
             <ul className={`nav-links ${isMenuOpen ? 'active' : ''}`}>
                 {links.map((link, index) => (
                     <li key={index} className="nav-link">
-                        <Link to={link.url} className="nav-link">
+                        <NavLink
+                            to={link.url}
+                            className={({ isActive }) =>
+                                isActive ? 'nav-link active' : 'nav-link'
+                            }
+                        >
                             {link.text}
-                        </Link>
+                        </NavLink>
                     </li>
                 ))}
 
