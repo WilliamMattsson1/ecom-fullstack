@@ -69,9 +69,29 @@ img {
     align-items: center;
 }
 
+.cart-container {
+    position: relative;
+}
+
 .cart-icon {
     color: black;
     font-size: 26px;
+}
+
+.cart-count {
+    position: absolute;
+    top: -12px;
+    right: -12px;
+    background-color: red;
+    color: white;
+    border-radius: 50%;
+    padding: 4px 6px;
+    font-size: 12px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 20px;
 }
 
 .hamburger {

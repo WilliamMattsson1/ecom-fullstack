@@ -56,6 +56,7 @@ const Navbar = () => {
                             className="cart-icon"
                             icon={faCartShopping}
                         />
+                        <div className="cart-count">0</div>
                     </Link>
                 </div>
                 <div
