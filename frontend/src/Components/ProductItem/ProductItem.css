@@ -1,0 +1,21 @@
+.product {
+    background-color: white;
+    max-width: 260px;
+    overflow: hidden;
+    border-radius: 20px;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
+.product h2 {
+    font-size: 1.6rem;
+    margin: 10px;
+    margin-bottom: 6px;
+    color: #333;
+}
+
+.product p {
+    font-size: 1.2rem;
+    margin-left: 10px;
+    margin-bottom: 8px;
+    color: #667;
+}
