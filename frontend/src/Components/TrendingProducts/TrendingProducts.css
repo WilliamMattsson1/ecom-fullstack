@@ -1,0 +1,56 @@
+.trending-products-container {
+    margin-top: 3rem;
+}
+
+.trending-products-container .title {
+    display: flex;
+    justify-content: center;
+    color: #333;
+}
+
+.trending-products-container .trending-products-p {
+    display: flex;
+    justify-content: center;
+    color: #667;
+    font-size: 1.3rem;
+    margin-top: 6px;
+}
+
+.hr-1 {
+    width: 460px;
+    height: 5px;
+    border-radius: 6px;
+    background-color: #777;
+    margin: auto;
+    margin-top: 1rem;
+}
+
+.trending-products {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.4rem;
+    margin-top: 1.6rem;
+    margin-bottom: 2rem;
+}
+
+.product {
+    background-color: white;
+    max-width: 260px;
+    overflow: hidden;
+    border-radius: 20px;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
+.product h2 {
+    font-size: 1.6rem;
+    margin: 10px;
+    color: #333;
+}
+
+.product p {
+    font-size: 1.2rem;
+    margin-left: 10px;
+    margin-bottom: 8px;
+    color: #667;
+}

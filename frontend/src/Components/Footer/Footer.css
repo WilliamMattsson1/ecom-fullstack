@@ -1,5 +1,4 @@
 .footer {
-    margin-top: 400px; /* Ta bort sen */
     display: flex;
     flex-direction: column;
     justify-content: center;

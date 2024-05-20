@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import Navbar from './Components/Navbar/Navbar'
 import Footer from './Components/Footer/Footer'
 import HeroSection from './Components/HeroSection/HeroSection'
+import TrendingProducts from './Components/TrendingProducts/TrendingProducts'
 
 interface Product {
     id: number
@@ -30,6 +31,7 @@ function App() {
         <>
             <Navbar />
             <HeroSection />
+            <TrendingProducts />
             <Footer />
 
             {products.map((product) => (
