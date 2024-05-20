@@ -1,6 +1,6 @@
 import './Footer.css'
 import logo from '../../assets/logo.png'
-import { Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
     faInstagram,
@@ -38,24 +38,44 @@ const Footer = () => {
             </div>
             <ul className="footer-links">
                 <li>
-                    <Link className="footer-link" to={'/'}>
+                    <NavLink
+                        className={({ isActive }) =>
+                            isActive ? 'footer-link active' : 'footer-link'
+                        }
+                        to={'/'}
+                    >
                         Home
-                    </Link>
+                    </NavLink>
                 </li>
                 <li>
-                    <Link className="footer-link" to={'/products'}>
+                    <NavLink
+                        className={({ isActive }) =>
+                            isActive ? 'footer-link active' : 'footer-link'
+                        }
+                        to={'/products'}
+                    >
                         Products
-                    </Link>
+                    </NavLink>
                 </li>
                 <li>
-                    <Link className="footer-link" to={'/about'}>
+                    <NavLink
+                        className={({ isActive }) =>
+                            isActive ? 'footer-link active' : 'footer-link'
+                        }
+                        to={'/about'}
+                    >
                         About
-                    </Link>
+                    </NavLink>
                 </li>
                 <li>
-                    <Link className="footer-link" to={'/contact'}>
+                    <NavLink
+                        className={({ isActive }) =>
+                            isActive ? 'footer-link active' : 'footer-link'
+                        }
+                        to={'/contact'}
+                    >
                         Contact
-                    </Link>
+                    </NavLink>
                 </li>
             </ul>
 

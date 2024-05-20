@@ -44,6 +44,10 @@
     color: black;
 }
 
+.footer-link.active {
+    font-weight: 500;
+}
+
 .footer-copyright {
     display: flex;
     flex-direction: column;
