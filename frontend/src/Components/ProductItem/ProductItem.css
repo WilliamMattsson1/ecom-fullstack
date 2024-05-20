@@ -7,15 +7,19 @@
 }
 
 .product h2 {
-    font-size: 1.6rem;
+    font-size: 1.4rem;
     margin: 10px;
     margin-bottom: 6px;
     color: #333;
 }
 
 .product p {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     margin-left: 10px;
     margin-bottom: 8px;
     color: #667;
+}
+
+.product-link {
+    text-decoration: none;
 }

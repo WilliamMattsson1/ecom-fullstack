@@ -15,7 +15,9 @@
 }
 
 .hero-text-container {
-    margin-left: 80px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
 }
 
 .hero-text-container h1 {
@@ -67,7 +69,7 @@
 .down-arrow-container {
     display: flex;
     justify-content: center;
-    margin-top: 35px;
+    margin-top: 48px;
 }
 
 .down-arrow {

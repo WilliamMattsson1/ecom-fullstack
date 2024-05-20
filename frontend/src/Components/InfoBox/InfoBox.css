@@ -1,0 +1,27 @@
+.info-box-container {
+    display: flex;
+    justify-content: space-around;
+    background-color: #333;
+    padding: 50px;
+    margin-top: 3rem;
+}
+
+.info-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+.info-box-icon {
+    font-size: 80px;
+    margin-bottom: 1rem;
+    color: #999;
+}
+
+hr {
+    width: 6px;
+    background-color: #999;
+    border-radius: 20px;
+}

@@ -3,6 +3,7 @@ import Navbar from './Components/Navbar/Navbar'
 import Footer from './Components/Footer/Footer'
 import HeroSection from './Components/HeroSection/HeroSection'
 import TrendingProducts from './Components/TrendingProducts/TrendingProducts'
+import InfoBox from './Components/InfoBox/InfoBox'
 
 interface Product {
     id: number
@@ -32,6 +33,7 @@ function App() {
             <Navbar />
             <HeroSection />
             <TrendingProducts />
+            <InfoBox />
             <Footer />
 
             {products.map((product) => (
