@@ -45,7 +45,7 @@ const Navbar = () => {
                     </li>
                 ))}
 
-                <li className="nav-link login-link">
+                <li className="login-link">
                     <Link
                         to="/login"
                         style={{ textDecoration: 'none', color: 'white' }}

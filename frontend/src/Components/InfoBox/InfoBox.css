@@ -24,4 +24,5 @@ hr {
     width: 6px;
     background-color: #999;
     border-radius: 20px;
+    border: none;
 }

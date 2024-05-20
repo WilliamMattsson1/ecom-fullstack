@@ -1,0 +1,13 @@
+Colors -
+Main Background - #f6f1eb (Från index.css)
+Logga och nav links - Black
+
+Title Text - #333
+Text P grey - #667
+
+{
+    Main Buttons - #333
+    Main Buttons : Hover - #555
+}
+
+Card Background - White
