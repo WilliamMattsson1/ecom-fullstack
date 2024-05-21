@@ -7,10 +7,29 @@ const NewsletterSub = () => {
         setEmail(e.target.value)
     }
 
-    const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+    const handleClick = async (e: React.MouseEvent<HTMLButtonElement>) => {
         e.preventDefault()
         console.log('Email:', email)
-        setEmail('')
+
+        try {
+            const response = await fetch('/subscribe', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ email })
+            })
+
+            if (!response.ok) {
+                console.log('Failed to subscribe to newsletter')
+            }
+
+            const data = await response.json()
+            console.log('Subscribtion successful:', data)
+            setEmail('')
+        } catch (error) {
+            console.error('Error subscribing to newsletter:', error)
+        }
     }
     return (
         <>
