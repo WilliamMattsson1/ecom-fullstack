@@ -15,11 +15,9 @@ const NotFoungPage = () => {
                 />
                 <h2>Sorry, the page you are looking for could not be found.</h2>
                 <p>Go back to the homepage</p>
-                <button>
-                    <Link className="btn-link" to="/">
-                        Home
-                    </Link>
-                </button>
+                <Link className="btn-link" to="/">
+                    <button>Home</button>
+                </Link>
             </div>
         </div>
     )

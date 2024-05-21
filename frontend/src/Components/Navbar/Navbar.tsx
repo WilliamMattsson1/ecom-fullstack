@@ -45,14 +45,12 @@ const Navbar = () => {
                     </li>
                 ))}
 
-                <li className="login-link">
-                    <Link
-                        to="/login"
-                        style={{ textDecoration: 'none', color: 'white' }}
-                    >
-                        Login
-                    </Link>
-                </li>
+                <Link
+                    to="/login"
+                    style={{ textDecoration: 'none', color: 'white' }}
+                >
+                    <li className="login-link">Login</li>
+                </Link>
             </ul>
             <div className="right-container">
                 <div className="cart-container">

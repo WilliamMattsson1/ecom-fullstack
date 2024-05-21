@@ -1,8 +1,12 @@
 import './HeroSection.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAngleDown } from '@fortawesome/free-solid-svg-icons'
+import { Link } from 'react-router-dom'
 
 const HeroSection = () => {
+    const handleClick = () => {
+        window.scrollTo({ top: window.innerHeight, behavior: 'smooth' })
+    }
     return (
         <>
             <div className="hero-section">
@@ -10,7 +14,9 @@ const HeroSection = () => {
                     <div className="hero-text-container">
                         <h1>Discover Your Style</h1>
                         <p>Check Or Latest Fashion</p>
-                        <button>Shop Now</button>
+                        <Link to={'/products'}>
+                            <button>Shop Now</button>
+                        </Link>
                     </div>
                 </div>
                 <div className="hero-img-container">
@@ -21,7 +27,11 @@ const HeroSection = () => {
                 </div>
             </div>
             <div className="down-arrow-container">
-                <FontAwesomeIcon className="down-arrow" icon={faAngleDown} />
+                <FontAwesomeIcon
+                    onClick={handleClick}
+                    className="down-arrow"
+                    icon={faAngleDown}
+                />
             </div>
         </>
     )
