@@ -7,6 +7,9 @@ import App from './App.tsx'
 import './index.css'
 import AboutPage from './Pages/AboutPage/AboutPage.tsx'
 import NotFoundPage from './Pages/NotFoundPage/NotFoundPage.tsx'
+import ProductsPage from './Pages/ProductsPage/ProductsPage.tsx'
+import LoginPage from './Pages/LoginPage/LoginPage.tsx'
+import CartPage from './Pages/CartPage/CartPage.tsx'
 
 const router = createBrowserRouter([
     {
@@ -15,8 +18,20 @@ const router = createBrowserRouter([
         errorElement: <NotFoundPage />
     },
     {
+        path: '/products',
+        element: <ProductsPage />
+    },
+    {
         path: '/about',
         element: <AboutPage />
+    },
+    {
+        path: '/login',
+        element: <LoginPage />
+    },
+    {
+        path: '/cart',
+        element: <CartPage />
     }
 ])
 
