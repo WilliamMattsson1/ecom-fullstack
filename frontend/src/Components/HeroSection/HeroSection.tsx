@@ -1,12 +1,8 @@
 import './HeroSection.css'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faAngleDown } from '@fortawesome/free-solid-svg-icons'
 import { Link } from 'react-router-dom'
+import DownArrow from '../DownArrow/DownArrow'
 
 const HeroSection = () => {
-    const handleClick = () => {
-        window.scrollTo({ top: window.innerHeight, behavior: 'smooth' })
-    }
     return (
         <>
             <div className="hero-section">
@@ -26,13 +22,7 @@ const HeroSection = () => {
                     />
                 </div>
             </div>
-            <div className="down-arrow-container">
-                <FontAwesomeIcon
-                    onClick={handleClick}
-                    className="down-arrow"
-                    icon={faAngleDown}
-                />
-            </div>
+            <DownArrow />
         </>
     )
 }

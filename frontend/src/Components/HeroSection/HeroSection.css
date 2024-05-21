@@ -66,19 +66,3 @@
     object-fit: cover;
     border-radius: 20px 0 0 20px;
 }
-
-.down-arrow-container {
-    display: flex;
-    justify-content: center;
-    margin-top: 48px;
-}
-
-.down-arrow {
-    font-size: 40px;
-    cursor: pointer;
-    color: #333;
-}
-
-.down-arrow:hover {
-    color: #555;
-}

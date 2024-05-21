@@ -1,4 +1,5 @@
 import ProductItem from '../ProductItem/ProductItem'
+import DownArrow from '../DownArrow/DownArrow'
 import './TrendingProducts.css'
 
 const TrendingProducts = () => {
@@ -29,26 +30,29 @@ const TrendingProducts = () => {
         }
     ]
     return (
-        <div className="trending-products-container">
-            <h1 className="title">Trending Products</h1>
-            <p className="trending-products-p">
-                Explore our latest and most popular items
-            </p>
-            <hr className="hr-1" />
-            <div className="trending-products">
-                {products.map((product) => {
-                    return (
-                        <ProductItem
-                            key={product.id}
-                            id={product.id}
-                            name={product.name}
-                            price={product.price}
-                            image={product.image}
-                        />
-                    )
-                })}
+        <>
+            <div className="trending-products-container">
+                <h1 className="title">Trending Products</h1>
+                <p className="trending-products-p">
+                    Explore our latest and most popular items
+                </p>
+                <hr className="hr-1" />
+                <div className="trending-products">
+                    {products.map((product) => {
+                        return (
+                            <ProductItem
+                                key={product.id}
+                                id={product.id}
+                                name={product.name}
+                                price={product.price}
+                                image={product.image}
+                            />
+                        )
+                    })}
+                </div>
             </div>
-        </div>
+            <DownArrow />
+        </>
     )
 }
 

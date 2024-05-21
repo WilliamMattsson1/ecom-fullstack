@@ -11,6 +11,7 @@ import ProductsPage from './Pages/ProductsPage/ProductsPage.tsx'
 import LoginPage from './Pages/LoginPage/LoginPage.tsx'
 import CartPage from './Pages/CartPage/CartPage.tsx'
 import ProductDetailsPage from './Pages/ProductDetailsPage/ProductDetails.tsx'
+import ContactPage from './Pages/ContactPage/ContactPage.tsx'
 
 const router = createBrowserRouter([
     {
@@ -37,6 +38,10 @@ const router = createBrowserRouter([
     {
         path: '/cart',
         element: <CartPage />
+    },
+    {
+        path: '/contact',
+        element: <ContactPage />
     }
 ])
 

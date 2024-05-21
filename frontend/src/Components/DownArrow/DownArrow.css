@@ -1,0 +1,15 @@
+.down-arrow-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 38px;
+}
+
+.down-arrow {
+    font-size: 40px;
+    cursor: pointer;
+    color: #333;
+}
+
+.down-arrow:hover {
+    color: #555;
+}
