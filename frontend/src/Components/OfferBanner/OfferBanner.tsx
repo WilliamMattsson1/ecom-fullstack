@@ -9,6 +9,7 @@ const OfferBanner = () => {
 
     const [currentMessage, setCurrentMessage] = useState(0)
 
+    /* Changes messages every 5s */
     useEffect(() => {
         const intervalId = setInterval(() => {
             setCurrentMessage((prevIndex) => (prevIndex + 1) % messages.length)

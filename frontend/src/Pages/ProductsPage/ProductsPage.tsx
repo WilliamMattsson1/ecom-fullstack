@@ -1,3 +1,4 @@
+import CategorySelection from '../../Components/CategorySelection/CategorySelection'
 import Footer from '../../Components/Footer/Footer'
 import Navbar from '../../Components/Navbar/Navbar'
 import OfferBanner from '../../Components/OfferBanner/OfferBanner'
@@ -7,6 +8,7 @@ const ProductsPage = () => {
         <>
             <Navbar />
             <OfferBanner />
+            <CategorySelection />
             <Footer />
         </>
     )
