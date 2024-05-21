@@ -3,7 +3,7 @@ import express from 'express'
 import * as sqlite from 'sqlite'
 import { Database } from 'sqlite'
 import sqlite3 from 'sqlite3'
-import path from 'path' // Gör så att vi kan hämta från vår frontend mapp
+import path from 'path'
 
 let database: Database
 ;(async () => {

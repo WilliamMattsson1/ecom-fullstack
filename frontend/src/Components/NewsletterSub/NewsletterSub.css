@@ -1,0 +1,93 @@
+.title {
+    display: flex;
+    justify-content: center;
+    color: #333;
+    margin-top: 2rem;
+}
+
+.newsletter-p {
+    display: flex;
+    justify-content: center;
+    color: #667;
+    font-size: 1.3rem;
+    margin-top: 6px;
+}
+
+.hr-1 {
+    width: 460px;
+    height: 5px;
+    border-radius: 6px;
+    background-color: #777;
+    margin: auto;
+    margin-top: 1rem;
+}
+
+.newsletter-box {
+    width: 80%;
+    min-height: fit-content;
+    padding: 4rem;
+    margin: auto;
+    margin-top: 2rem;
+    border-radius: 6px;
+    background: rgb(254, 142, 88);
+    background: linear-gradient(
+        90deg,
+        rgba(254, 142, 88, 1) 0%,
+        rgba(254, 142, 88, 1) 31%,
+        rgba(87, 54, 208, 1) 98%
+    );
+
+    background: rgb(214, 204, 194);
+    background: linear-gradient(
+        86deg,
+        rgba(214, 204, 194, 1) 0%,
+        rgba(237, 237, 233, 1) 26%,
+        rgba(255, 255, 255, 1) 99%
+    );
+    opacity: 0.9;
+    text-align: center;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
+.newsletter-box h3 {
+    font-size: 1.8rem;
+    margin-bottom: 0.6rem;
+    color: #333;
+}
+
+.newsletter-box p {
+    font-size: 1.1rem;
+    color: #667;
+    margin-bottom: 0.8rem;
+}
+
+.newsletter-box form {
+    background: white;
+    display: flex;
+    width: fit-content;
+    margin: auto;
+    margin-top: 1rem;
+    border-radius: 6px;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
+.newsletter-input {
+    border: 0;
+    outline: none;
+    padding: 10px 20px;
+    height: 3rem;
+    width: 100%;
+    font-size: 1rem;
+    border-radius: 6px;
+}
+
+.newsletter-btn {
+    background-color: #333;
+    color: white;
+    padding: 1rem;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    border-radius: 0 6px 6px 0;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+}

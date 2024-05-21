@@ -4,6 +4,7 @@ import Footer from './Components/Footer/Footer'
 import HeroSection from './Components/HeroSection/HeroSection'
 import TrendingProducts from './Components/TrendingProducts/TrendingProducts'
 import InfoBox from './Components/InfoBox/InfoBox'
+import NewsletterSub from './Components/NewsletterSub/NewsletterSub'
 
 interface Product {
     id: number
@@ -34,8 +35,10 @@ function App() {
             <HeroSection />
             <TrendingProducts />
             <InfoBox />
+            <NewsletterSub />
             <Footer />
 
+            {/* Enbart för att kolla så att backend och frontend kan kommunicera  */}
             {products.map((product) => (
                 <div key={product.id}>
                     <h2>{product.name}</h2>
