@@ -12,6 +12,7 @@ import LoginPage from './Pages/LoginPage/LoginPage.tsx'
 import CartPage from './Pages/CartPage/CartPage.tsx'
 import ProductDetailsPage from './Pages/ProductDetailsPage/ProductDetails.tsx'
 import ContactPage from './Pages/ContactPage/ContactPage.tsx'
+import GenderProducts from './Pages/GenderProducts/GenderProducts.tsx'
 
 const router = createBrowserRouter([
     {
@@ -24,7 +25,16 @@ const router = createBrowserRouter([
         element: <ProductsPage />
     },
     {
-        path: '/products/:id',
+        path: '/products/men',
+        element: <GenderProducts gender="men" />
+    },
+    {
+        path: '/products/woman',
+        element: <GenderProducts gender="woman" />
+    },
+
+    {
+        path: '/products/:gender/:id',
         element: <ProductDetailsPage />
     },
     {

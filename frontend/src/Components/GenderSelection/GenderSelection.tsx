@@ -1,4 +1,5 @@
-import './CategorySelection.css'
+import { Link } from 'react-router-dom'
+import './GenderSelection.css'
 const CategorySelection = () => {
     return (
         <>
@@ -17,14 +18,18 @@ const CategorySelection = () => {
                         <h3>Mens Clothing</h3>
 
                         <p>Discover the latest trends in mens fashion.</p>
-                        <button>Shop now</button>
+                        <Link to="/products/men">
+                            <button>Shop now</button>
+                        </Link>
                     </div>
                 </div>
                 <div className="products-category womens-clothing">
                     <div className="category-text">
                         <h3>Womens Clothing</h3>
                         <p>Explore the latest trends in womens fashion.</p>
-                        <button>Shop now</button>
+                        <Link to="/products/woman">
+                            <button>Shop now</button>
+                        </Link>
                     </div>
                     <div className="category-image">
                         <img

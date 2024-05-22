@@ -5,13 +5,18 @@ interface Product {
     id: number
     name: string
     price: number
+    gender: string
+    category: string
     image: string
 }
 
 const ProductItem = (props: Product) => {
     return (
         <div className="product">
-            <Link className="product-link" to={`/products/${props.id}`}>
+            <Link
+                className="product-link"
+                to={`/products/${props.gender}/${props.id}`}
+            >
                 <img src={props.image} alt="product image" />
                 <h2>{props.name}</h2>
                 <p>{props.price} kr</p>
