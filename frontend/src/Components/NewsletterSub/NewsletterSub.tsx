@@ -48,6 +48,7 @@ const NewsletterSub = () => {
                         className="newsletter-input"
                         onChange={handleChange}
                         value={email}
+                        name="email"
                     />
                     <button
                         type="submit"
