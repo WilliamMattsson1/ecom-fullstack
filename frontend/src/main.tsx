@@ -10,7 +10,7 @@ import NotFoundPage from './Pages/NotFoundPage/NotFoundPage.tsx'
 import ProductsPage from './Pages/ProductsPage/ProductsPage.tsx'
 import LoginPage from './Pages/LoginPage/LoginPage.tsx'
 import CartPage from './Pages/CartPage/CartPage.tsx'
-import ProductDetailsPage from './Pages/ProductDetailsPage/ProductDetails.tsx'
+import ProductDetailsPage from './Pages/ProductDetailsPage/ProductDetailsPage.tsx'
 import ContactPage from './Pages/ContactPage/ContactPage.tsx'
 import GenderProducts from './Pages/GenderProducts/GenderProducts.tsx'
 
@@ -34,7 +34,7 @@ const router = createBrowserRouter([
     },
 
     {
-        path: '/products/:gender/:id',
+        path: '/products/:gender/:productName',
         element: <ProductDetailsPage />
     },
     {
