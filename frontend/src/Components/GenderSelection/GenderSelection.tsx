@@ -1,6 +1,12 @@
 import { Link } from 'react-router-dom'
 import './GenderSelection.css'
 const CategorySelection = () => {
+    const scrollToTop = () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        })
+    }
     return (
         <>
             <h2 className="products-title">Our Products</h2>
@@ -18,7 +24,7 @@ const CategorySelection = () => {
                         <h3>Mens Clothing</h3>
 
                         <p>Discover the latest trends in mens fashion.</p>
-                        <Link to="/products/men">
+                        <Link to="/products/men" onClick={scrollToTop}>
                             <button>Shop now</button>
                         </Link>
                     </div>
@@ -27,7 +33,7 @@ const CategorySelection = () => {
                     <div className="category-text">
                         <h3>Womens Clothing</h3>
                         <p>Explore the latest trends in womens fashion.</p>
-                        <Link to="/products/woman">
+                        <Link to="/products/woman" onClick={scrollToTop}>
                             <button>Shop now</button>
                         </Link>
                     </div>
