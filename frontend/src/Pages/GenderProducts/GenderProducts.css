@@ -1,0 +1,8 @@
+.gender-products {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.4rem;
+    margin-top: 1.6rem;
+    margin-bottom: 2rem;
+}

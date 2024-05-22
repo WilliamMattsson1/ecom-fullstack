@@ -3,7 +3,16 @@ import DownArrow from '../DownArrow/DownArrow'
 import './TrendingProducts.css'
 
 const TrendingProducts = () => {
-    const products = [
+    interface Product {
+        id: number
+        name: string
+        price: number
+        gender: string
+        category: string
+        image: string
+    }
+
+    const products: Product[] = [
         {
             id: 1,
             name: 'Product 1',
