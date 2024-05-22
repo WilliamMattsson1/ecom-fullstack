@@ -5,21 +5,25 @@ import { faHouse } from '@fortawesome/free-solid-svg-icons'
 
 const BreadCrumbs = () => {
     const location = useLocation()
-    console.log(location.pathname) /* /products/men */
     const { pathname } = location
-    const segments = pathname.split('/')
+    const pathParts = pathname.split('/')
+    console.log(pathParts)
 
-    const breadCrumbs = segments.map((segment, index) => {
-        const url = segments.slice(0, index + 1).join('/')
+    const breadCrumbs = pathParts.map((pathPart, index) => {
+        const url = pathParts.slice(0, index + 1).join('/')
+        const fixedPathPart = pathPart.replace(/%20/g, ' ')
+
         return (
             <span className="each-breadcrumb" key={index}>
                 <Link className="breadcrumb-link" to={url}>
-                    {segment.toUpperCase()}
+                    {fixedPathPart.toUpperCase()}
                 </Link>
-                {index < segments.length - 1 && ' / '}
+                {index < pathParts.length - 1 && ' / '}{' '}
+                {/* Lägger till / på alla utom sista. */}
             </span>
         )
     })
+
     return (
         <>
             <div className="breadcrumbs">

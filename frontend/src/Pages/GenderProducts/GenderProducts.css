@@ -1,8 +1,17 @@
+.gender-products-title {
+    font-size: 2rem;
+    color: #333;
+    text-align: center;
+}
+
 .gender-products {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     gap: 1.4rem;
+    margin: auto;
     margin-top: 1.6rem;
     margin-bottom: 2rem;
+    width: 90%;
+    max-width: 1400px;
 }

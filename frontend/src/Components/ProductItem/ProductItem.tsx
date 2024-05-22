@@ -15,7 +15,7 @@ const ProductItem = (props: Product) => {
         <div className="product">
             <Link
                 className="product-link"
-                to={`/products/${props.gender}/${props.id}`}
+                to={`/products/${props.gender}/${props.name}`}
             >
                 <img src={props.image} alt="product image" />
                 <h2>{props.name}</h2>

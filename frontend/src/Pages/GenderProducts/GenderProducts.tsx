@@ -23,7 +23,7 @@ const GenderProducts = (props: GenderProductsProps) => {
     const products: Product[] = [
         {
             id: 5,
-            name: 'Mens T-shirt',
+            name: 'Mens T-shirt Military Green Long Sleeve',
             price: 200,
             gender: 'men',
             category: 't-shirt',
@@ -103,7 +103,7 @@ const GenderProducts = (props: GenderProductsProps) => {
         },
         {
             id: 15,
-            name: 'Woman T-shirt',
+            name: 'Woman T-shirt White',
             price: 200,
             gender: 'woman',
             category: 't-shirt',
@@ -124,6 +124,30 @@ const GenderProducts = (props: GenderProductsProps) => {
             gender: 'woman',
             category: 't-shirt',
             image: 'https://images.unsplash.com/photo-1552642986-ccb41e7059e7?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8bWVuJTIwdCUyMHNoaXJ0fGVufDB8fDB8fHwy'
+        },
+        {
+            id: 18,
+            name: 'Woman T-shirt',
+            price: 200,
+            gender: 'woman',
+            category: 't-shirt',
+            image: 'https://images.unsplash.com/photo-1552642986-ccb41e7059e7?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8bWVuJTIwdCUyMHNoaXJ0fGVufDB8fDB8fHwy'
+        },
+        {
+            id: 19,
+            name: 'Woman T-shirt',
+            price: 200,
+            gender: 'woman',
+            category: 't-shirt',
+            image: 'https://images.unsplash.com/photo-1552642986-ccb41e7059e7?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8bWVuJTIwdCUyMHNoaXJ0fGVufDB8fDB8fHwy'
+        },
+        {
+            id: 20,
+            name: 'Woman T-shirt',
+            price: 200,
+            gender: 'woman',
+            category: 't-shirt',
+            image: 'https://images.unsplash.com/photo-1552642986-ccb41e7059e7?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8bWVuJTIwdCUyMHNoaXJ0fGVufDB8fDB8fHwy'
         }
     ]
 
@@ -137,21 +161,26 @@ const GenderProducts = (props: GenderProductsProps) => {
             <Navbar />
             <OfferBanner />
             <BreadCrumbs />
-            <h1>{props.gender}</h1>
-            <div className="gender-products">
-                {genderProducts.map((product) => {
-                    return (
-                        <ProductItem
-                            key={product.id}
-                            id={product.id}
-                            name={product.name}
-                            price={product.price}
-                            gender={product.gender}
-                            category={product.category}
-                            image={product.image}
-                        />
-                    )
-                })}
+            <div className="gender-products-container">
+                <h1 className="gender-products-title">
+                    All products for {props.gender}
+                </h1>
+                <hr className="hr-1" />
+                <div className="gender-products">
+                    {genderProducts.map((product) => {
+                        return (
+                            <ProductItem
+                                key={product.id}
+                                id={product.id}
+                                name={product.name}
+                                price={product.price}
+                                gender={product.gender}
+                                category={product.category}
+                                image={product.image}
+                            />
+                        )
+                    })}
+                </div>
             </div>
             <Footer />
         </>
