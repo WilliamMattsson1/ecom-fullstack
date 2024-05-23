@@ -1,3 +1,4 @@
+import ProductItem from '../ProductItem/ProductItem'
 import './SimilarProducts.css'
 
 interface ProductItem {
@@ -20,13 +21,19 @@ const SimilarProducts = ({ products }: SimilarProductsProps) => {
             <p>Other also bought these</p>
             <hr className="hr-1" />
             <div className="similar-products">
-                {products.map((product, index) => (
-                    <div key={index} className="similar-product">
-                        <img src={product.image} alt={product.name} />
-                        <h3>{product.name}</h3>
-                        <p>{product.price} kr</p>
-                    </div>
-                ))}
+                {products.map((product) => {
+                    return (
+                        <ProductItem
+                            key={product.id}
+                            id={product.id}
+                            name={product.name}
+                            price={product.price}
+                            gender={product.gender}
+                            category={product.category}
+                            image={product.image}
+                        />
+                    )
+                })}
             </div>
         </div>
     )

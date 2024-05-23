@@ -1,0 +1,27 @@
+.similar-products-container {
+    margin-top: 3rem;
+}
+
+.similar-products-container h2 {
+    display: flex;
+    justify-content: center;
+    color: #333;
+    font-size: 1.8rem;
+}
+
+.similar-products-container p {
+    display: flex;
+    justify-content: center;
+    color: #667;
+    font-size: 18px;
+    margin-top: 6px;
+}
+
+.similar-products {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.4rem;
+    margin-top: 1.6rem;
+    margin-bottom: 2rem;
+}

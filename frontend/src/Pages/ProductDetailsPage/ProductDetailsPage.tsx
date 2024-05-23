@@ -1,5 +1,6 @@
 import BreadCrumbs from '../../Components/BreadCrumbs/BreadCrumbs'
 import Footer from '../../Components/Footer/Footer'
+import InfoBox from '../../Components/InfoBox/InfoBox'
 import Navbar from '../../Components/Navbar/Navbar'
 import OfferBanner from '../../Components/OfferBanner/OfferBanner'
 import ProductDetails from '../../Components/ProductDetails/ProductDetails'
@@ -69,7 +70,7 @@ const ProductDetailsPage = () => {
         },
         {
             id: 202,
-            name: 'Liknande produkt 1',
+            name: 'Liknande produkt 2',
             price: 120,
             gender: 'men',
             category: 'tops',
@@ -77,7 +78,7 @@ const ProductDetailsPage = () => {
         },
         {
             id: 203,
-            name: 'Liknande produkt 1',
+            name: 'Liknande produkt 3',
             price: 120,
             gender: 'men',
             category: 'tops',
@@ -124,6 +125,7 @@ const ProductDetailsPage = () => {
             <BreadCrumbs />
             {rightProduct && <ProductDetails product={rightProduct} />}
             <SimilarProducts products={similarProducts} />
+            <InfoBox />
             <Footer />
         </>
     )
