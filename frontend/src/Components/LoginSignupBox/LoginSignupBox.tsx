@@ -5,7 +5,6 @@ import { faUser, faEnvelope, faLock } from '@fortawesome/free-solid-svg-icons'
 
 const LoginSignupBox = () => {
     const [loginSignupText, setLoginSignupText] = useState<string>('Sign up')
-
     return (
         <div className="login-signup-box-container">
             <form action="">
@@ -14,18 +13,23 @@ const LoginSignupBox = () => {
                     <hr className="hr-1" />
                 </div>
                 <div className="login-signup-inputs">
-                    <div className="login-signup-input">
-                        <FontAwesomeIcon
-                            className="login-signup-icon"
-                            icon={faUser}
-                        />
-                        <input
-                            name="name"
-                            type="text"
-                            placeholder="Enter name"
-                            autoComplete="name"
-                        />
-                    </div>
+                    {loginSignupText === 'Sign up' ? (
+                        <div className="login-signup-input">
+                            <FontAwesomeIcon
+                                className="login-signup-icon"
+                                icon={faUser}
+                            />
+                            <input
+                                name="name"
+                                type="text"
+                                placeholder="Enter name"
+                                autoComplete="name"
+                            />
+                        </div>
+                    ) : (
+                        <></>
+                    )}
+
                     <div className="login-signup-input">
                         <FontAwesomeIcon
                             className="login-signup-icon"
@@ -52,7 +56,29 @@ const LoginSignupBox = () => {
                     </div>
                 </div>
                 <div className="login-signup-change">
-                    Already have an account? <span>Login here</span>
+                    {loginSignupText === 'Sign up' ? (
+                        <p>
+                            Already have an account?{' '}
+                            <span
+                                onClick={() => {
+                                    setLoginSignupText('Login')
+                                }}
+                            >
+                                Login here
+                            </span>
+                        </p>
+                    ) : (
+                        <p>
+                            Don't have an account?{' '}
+                            <span
+                                onClick={() => {
+                                    setLoginSignupText('Sign up')
+                                }}
+                            >
+                                Sign up here
+                            </span>
+                        </p>
+                    )}
                 </div>
                 <div className="login-signup-btn-container">
                     <button className="login-signup-btn">Continue</button>
