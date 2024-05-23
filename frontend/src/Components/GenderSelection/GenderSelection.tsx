@@ -1,12 +1,11 @@
 import { Link } from 'react-router-dom'
 import './GenderSelection.css'
+
+import useScroll from '../../Context/useScroll'
+
 const CategorySelection = () => {
-    const scrollToTop = () => {
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-        })
-    }
+    const { scrollToTop } = useScroll()
+
     return (
         <>
             <h2 className="products-title">Our Products</h2>

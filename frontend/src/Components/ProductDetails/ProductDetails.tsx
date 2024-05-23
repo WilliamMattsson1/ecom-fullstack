@@ -1,5 +1,7 @@
 import './ProductDetails.css'
 
+/* Ska kunna lägga till item i cart */
+
 interface Product {
     id: number
     name: string

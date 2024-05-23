@@ -2,6 +2,8 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 
+import { ScrollProvider } from './Context/ScrollContext.tsx'
+
 import App from './App.tsx'
 
 import './index.css'
@@ -57,6 +59,8 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
     <React.StrictMode>
-        <RouterProvider router={router} />
+        <ScrollProvider>
+            <RouterProvider router={router} />
+        </ScrollProvider>
     </React.StrictMode>
 )
