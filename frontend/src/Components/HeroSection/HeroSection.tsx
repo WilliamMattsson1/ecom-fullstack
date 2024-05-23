@@ -2,7 +2,10 @@ import './HeroSection.css'
 import { Link } from 'react-router-dom'
 import DownArrow from '../DownArrow/DownArrow'
 
+import useScroll from '../../Context/useScroll'
+
 const HeroSection = () => {
+    const { scrollToTop } = useScroll()
     return (
         <>
             <div className="hero-section">
@@ -10,7 +13,7 @@ const HeroSection = () => {
                     <div className="hero-text-container">
                         <h1>Discover Your Style</h1>
                         <p>Check Or Latest Fashion</p>
-                        <Link to={'/products'}>
+                        <Link onClick={scrollToTop} to={'/products'}>
                             <button>Shop Now</button>
                         </Link>
                     </div>
