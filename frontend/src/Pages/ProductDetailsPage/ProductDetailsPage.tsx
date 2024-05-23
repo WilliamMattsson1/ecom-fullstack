@@ -33,6 +33,30 @@ const ProductDetailsPage = () => {
             gender: 'men',
             category: 'tops',
             image: 'https://images.unsplash.com/photo-1512310604669-443f26c35f52?q=80&w=1034&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+        },
+        {
+            id: 125,
+            name: 'Product 125',
+            price: 120,
+            gender: 'woman',
+            category: 'tops',
+            image: 'https://images.unsplash.com/photo-1512310604669-443f26c35f52?q=80&w=1034&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+        },
+        {
+            id: 126,
+            name: 'Product 126',
+            price: 120,
+            gender: 'woman',
+            category: 'tops',
+            image: 'https://images.unsplash.com/photo-1512310604669-443f26c35f52?q=80&w=1034&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+        },
+        {
+            id: 123,
+            name: 'Product 1',
+            price: 120,
+            gender: 'woman',
+            category: 'top4',
+            image: 'https://images.unsplash.com/photo-1512310604669-443f26c35f52?q=80&w=1034&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
         }
     ]
 
@@ -49,6 +73,16 @@ const ProductDetailsPage = () => {
     } else {
         console.log('Product not found')
     }
+
+    /* Hittar liknande produkter med samma kategori, samma gender. Och inte är samma produkt */
+    const similarProducts = products.filter(
+        (product) =>
+            product.category === rightProduct?.category &&
+            product.gender === rightProduct?.gender &&
+            product.id !== rightProduct?.id
+    )
+
+    console.log('Similar products', similarProducts)
 
     return (
         <>
