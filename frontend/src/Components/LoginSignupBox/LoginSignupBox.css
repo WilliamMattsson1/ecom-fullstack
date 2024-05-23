@@ -1,0 +1,101 @@
+.login-signup-box-container {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    margin-top: 125px;
+    background-color: white;
+    padding-bottom: 30px;
+    width: 50%;
+    min-width: 300px;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    border-radius: 16px;
+}
+
+.login-signup-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 1.4rem;
+}
+
+.login-signup-text {
+    color: #333;
+    font-size: 2rem;
+    font-weight: 600;
+}
+
+.login-signup-header hr {
+    width: 90px;
+}
+
+.login-signup-inputs {
+    margin-top: 2.2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.4rem;
+}
+
+.login-signup-input {
+    display: flex;
+    align-items: center;
+    margin: auto;
+    width: 80%;
+    height: 70px;
+    background-color: #e9ecef;
+    border-radius: 8px;
+}
+
+.login-signup-input .login-signup-icon {
+    margin: 0px 30px;
+    font-size: 22px;
+    color: #333;
+}
+
+.login-signup-input input {
+    height: 40px;
+    width: 100%;
+    background-color: transparent;
+    font-size: 1.2rem;
+    border: none;
+    outline: none;
+}
+
+.login-signup-change {
+    margin: 1.6rem auto;
+    display: flex;
+    justify-content: center;
+    gap: 4px;
+    color: #333;
+}
+
+.login-signup-change span {
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.login-signup-change span:hover {
+    text-decoration: underline;
+    text-underline-offset: 6px;
+}
+
+.login-signup-btn-container {
+    margin: 30px auto;
+    width: 80%;
+}
+
+.login-signup-btn {
+    padding: 15px 30px;
+    background-color: #333;
+    color: white;
+    width: 100%;
+    font-size: 1.2rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.login-signup-btn:hover {
+    background-color: #555;
+}
