@@ -3,6 +3,7 @@ import Footer from '../../Components/Footer/Footer'
 import Navbar from '../../Components/Navbar/Navbar'
 import OfferBanner from '../../Components/OfferBanner/OfferBanner'
 import ProductDetails from '../../Components/ProductDetails/ProductDetails'
+import SimilarProducts from '../../Components/SimilarProducts/SimilarProducts'
 import './ProductDetailsPage.css'
 import { useParams } from 'react-router-dom'
 
@@ -51,11 +52,43 @@ const ProductDetailsPage = () => {
             image: 'https://images.unsplash.com/photo-1512310604669-443f26c35f52?q=80&w=1034&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
         },
         {
-            id: 123,
+            id: 127,
             name: 'Product 1',
             price: 120,
             gender: 'woman',
             category: 'top4',
+            image: 'https://images.unsplash.com/photo-1512310604669-443f26c35f52?q=80&w=1034&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+        },
+        {
+            id: 201,
+            name: 'Liknande produkt 1',
+            price: 120,
+            gender: 'men',
+            category: 'tops',
+            image: 'https://images.unsplash.com/photo-1512310604669-443f26c35f52?q=80&w=1034&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+        },
+        {
+            id: 202,
+            name: 'Liknande produkt 1',
+            price: 120,
+            gender: 'men',
+            category: 'tops',
+            image: 'https://images.unsplash.com/photo-1512310604669-443f26c35f52?q=80&w=1034&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+        },
+        {
+            id: 203,
+            name: 'Liknande produkt 1',
+            price: 120,
+            gender: 'men',
+            category: 'tops',
+            image: 'https://images.unsplash.com/photo-1512310604669-443f26c35f52?q=80&w=1034&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+        },
+        {
+            id: 204,
+            name: 'Liknande produkt 4',
+            price: 120,
+            gender: 'men',
+            category: 'tops',
             image: 'https://images.unsplash.com/photo-1512310604669-443f26c35f52?q=80&w=1034&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
         }
     ]
@@ -90,6 +123,7 @@ const ProductDetailsPage = () => {
             <OfferBanner />
             <BreadCrumbs />
             {rightProduct && <ProductDetails product={rightProduct} />}
+            <SimilarProducts products={similarProducts} />
             <Footer />
         </>
     )
