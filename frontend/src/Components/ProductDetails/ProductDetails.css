@@ -1,0 +1,103 @@
+.product-details {
+    display: flex;
+    align-items: center;
+    margin: auto;
+    margin-top: 3rem;
+    width: 70%;
+    height: 550px;
+    background-color: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
+.product-details-img-container {
+    width: 50%;
+}
+
+.product-details-img-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.product-details-text-container {
+    width: 50%;
+    margin: 2rem;
+    margin-top: 4rem;
+}
+
+.product-details-text-container h2 {
+    font-size: 1.8rem;
+    color: #333;
+}
+
+.product-details-text-container h4 {
+    font-size: 1.2rem;
+    margin-bottom: 1.4rem;
+    color: #333;
+    font-weight: 500;
+}
+
+.sizes {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.sizes h4 {
+    margin: 1rem 0;
+    font-size: 1.2rem;
+    color: #333;
+    font-weight: 600;
+}
+
+.sizes p {
+    padding: 6px 14px;
+    border: 1px solid #333;
+    border-radius: 8px;
+    font-size: 12px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.sizes p:hover {
+    background-color: #333;
+    color: white;
+}
+
+.product-details-text-info {
+    margin-top: 1rem;
+}
+
+.product-details-text-info h5 {
+    font-size: 1.2rem;
+    color: #333;
+    font-weight: 600;
+}
+
+.product-details-text-container h6 {
+    font-size: 2rem;
+    color: #333;
+    margin-top: 1.2rem;
+}
+
+.product-details-text-container button {
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: #fff;
+    background-color: #333;
+    border: none;
+    cursor: pointer;
+    border-radius: 8px;
+    width: 160px; /* Kanske den */
+    width: 100%;
+    height: 50px;
+    margin-top: 6px;
+    transition: background-color 0.3s ease;
+}
+
+.product-details-text-container button:hover {
+    background-color: #555;
+}
