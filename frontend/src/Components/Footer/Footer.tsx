@@ -9,10 +9,14 @@ import {
     faXTwitter
 } from '@fortawesome/free-brands-svg-icons'
 
+import useScroll from '../../Context/useScroll'
+
 const Footer = () => {
     const getCurrentYear = () => {
         return new Date().getFullYear()
     }
+
+    const { scrollToTop } = useScroll()
     return (
         <div className="footer">
             <div className="footer-logo">
@@ -39,6 +43,7 @@ const Footer = () => {
             <ul className="footer-links">
                 <li>
                     <NavLink
+                        onClick={scrollToTop}
                         className={({ isActive }) =>
                             isActive ? 'footer-link active' : 'footer-link'
                         }
@@ -49,6 +54,7 @@ const Footer = () => {
                 </li>
                 <li>
                     <NavLink
+                        onClick={scrollToTop}
                         className={({ isActive }) =>
                             isActive ? 'footer-link active' : 'footer-link'
                         }
@@ -59,6 +65,7 @@ const Footer = () => {
                 </li>
                 <li>
                     <NavLink
+                        onClick={scrollToTop}
                         className={({ isActive }) =>
                             isActive ? 'footer-link active' : 'footer-link'
                         }
@@ -69,6 +76,7 @@ const Footer = () => {
                 </li>
                 <li>
                     <NavLink
+                        onClick={scrollToTop}
                         className={({ isActive }) =>
                             isActive ? 'footer-link active' : 'footer-link'
                         }

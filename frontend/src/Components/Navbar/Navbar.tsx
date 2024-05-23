@@ -7,6 +7,8 @@ import { faCartShopping } from '@fortawesome/free-solid-svg-icons'
 
 import logo from '../../assets/logo.png'
 
+import useScroll from '../../Context/useScroll'
+
 interface LinkItem {
     url: string
     text: string
@@ -24,6 +26,8 @@ const Navbar = () => {
         setIsMenuOpen(!isMenuOpen)
     }
 
+    const { scrollToTop } = useScroll()
+
     return (
         <nav>
             <div className="logo">
@@ -35,6 +39,7 @@ const Navbar = () => {
                 {links.map((link, index) => (
                     <li key={index} className="nav-link">
                         <NavLink
+                            onClick={scrollToTop}
                             to={link.url}
                             className={({ isActive }) =>
                                 isActive ? 'nav-link active' : 'nav-link'

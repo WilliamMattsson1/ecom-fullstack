@@ -1,6 +1,8 @@
 import './ProductItem.css'
 import { Link } from 'react-router-dom'
 
+import useScroll from '../../Context/useScroll'
+
 interface Product {
     id: number
     name: string
@@ -11,9 +13,11 @@ interface Product {
 }
 
 const ProductItem = (props: Product) => {
+    const { scrollToTop } = useScroll()
     return (
         <div className="product">
             <Link
+                onClick={scrollToTop}
                 className="product-link"
                 to={`/products/${props.gender}/${props.name}`}
             >
