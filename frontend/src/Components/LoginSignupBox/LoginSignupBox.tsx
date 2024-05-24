@@ -20,7 +20,6 @@ const LoginSignupBox = () => {
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
-        console.log(formData)
         if (loginSignupText === 'Sign up') {
             signupUser()
         } else {
@@ -39,6 +38,10 @@ const LoginSignupBox = () => {
             })
             const data = await response.json()
             console.log(data)
+
+            if (response.ok) {
+                window.location.href = '/'
+            }
         } catch (error) {
             console.log(error)
         }
@@ -55,6 +58,11 @@ const LoginSignupBox = () => {
             })
             const data = await response.json()
             console.log(data)
+
+            if (response.ok) {
+                window.location.href = '/'
+                console.log('User logged in (from frontend)')
+            }
         } catch (error) {
             console.log(error)
         }
