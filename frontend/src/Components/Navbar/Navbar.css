@@ -121,6 +121,7 @@ img {
     text-decoration: none;
     padding: 12px;
     border-radius: 8px;
+    cursor: pointer;
 }
 
 .login-link:hover {

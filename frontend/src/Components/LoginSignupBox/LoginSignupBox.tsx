@@ -41,6 +41,7 @@ const LoginSignupBox = () => {
 
             if (response.ok) {
                 setLoginSignupText('Login')
+                console.log('User signed up (from frontend)')
             }
         } catch (error) {
             console.log(error)

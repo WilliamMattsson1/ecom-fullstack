@@ -63,9 +63,14 @@ const Navbar = () => {
                 ))}
 
                 {isLoggedIn ? (
-                    <li className="login-link" onClick={handleLogout}>
-                        Log out
-                    </li>
+                    <Link
+                        to="/"
+                        style={{ textDecoration: 'none', color: 'white' }}
+                    >
+                        <li className="login-link" onClick={handleLogout}>
+                            Log out
+                        </li>
+                    </Link>
                 ) : (
                     <Link
                         to="/login"
