@@ -53,12 +53,20 @@ const CartItems = () => {
                                                 alt={product.name}
                                             />
                                             <div className="cart-item-info-p-c">
-                                                <p>{product.name}</p>
-                                                <p>${product.price}</p>
+                                                <p className="cart-item-info-name">
+                                                    {product.name}
+                                                </p>
+                                                <p className="cart-item-info-price">
+                                                    ${product.price}
+                                                </p>
                                             </div>
                                         </div>
-                                        <p>1</p>
-                                        <p>${product.price}</p>
+                                        <p className="cart-item-info-quantity">
+                                            1
+                                        </p>
+                                        <p className="cart-item-info-total">
+                                            ${product.price}
+                                        </p>
                                         <FontAwesomeIcon
                                             className="cart-remove-icon"
                                             icon={faXmark}
