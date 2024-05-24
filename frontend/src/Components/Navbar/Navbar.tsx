@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Link, NavLink } from 'react-router-dom'
 import './Navbar.css'
 
@@ -16,6 +16,9 @@ interface LinkItem {
 
 const Navbar = () => {
     const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false)
+    const [isLoggedIn, setIsLoggedIn] = useState<boolean>(
+        localStorage.getItem('token') ? true : false
+    )
     const links: LinkItem[] = [
         { url: '/', text: 'Home' },
         { url: '/products', text: 'Products' },
@@ -24,6 +27,15 @@ const Navbar = () => {
 
     const toggleMenu = () => {
         setIsMenuOpen(!isMenuOpen)
+    }
+
+    useEffect(() => {
+        setIsLoggedIn(localStorage.getItem('token') ? true : false)
+    }, [isLoggedIn])
+
+    const handleLogout = () => {
+        localStorage.removeItem('token')
+        setIsLoggedIn(false)
     }
 
     const { scrollToTop } = useScroll()
@@ -50,16 +62,10 @@ const Navbar = () => {
                     </li>
                 ))}
 
-                {localStorage.getItem('token') ? (
-                    <Link
-                        onClick={() => {
-                            localStorage.removeItem('token')
-                        }}
-                        to="/"
-                        style={{ textDecoration: 'none', color: 'white' }}
-                    >
-                        <li className="login-link">Log out</li>
-                    </Link>
+                {isLoggedIn ? (
+                    <li className="login-link" onClick={handleLogout}>
+                        Log out
+                    </li>
                 ) : (
                     <Link
                         to="/login"

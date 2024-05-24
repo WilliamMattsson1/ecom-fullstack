@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUser, faEnvelope, faLock } from '@fortawesome/free-solid-svg-icons'
 
 const LoginSignupBox = () => {
-    const [loginSignupText, setLoginSignupText] = useState<string>('Sign up')
+    const [loginSignupText, setLoginSignupText] = useState<string>('Login')
     const [formData, setFormData] = useState({
         name: '',
         email: '',
@@ -40,7 +40,7 @@ const LoginSignupBox = () => {
             console.log(data)
 
             if (response.ok) {
-                window.location.href = '/'
+                setLoginSignupText('Login')
             }
         } catch (error) {
             console.log(error)
