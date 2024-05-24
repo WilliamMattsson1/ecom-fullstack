@@ -21,6 +21,43 @@ const LoginSignupBox = () => {
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
         console.log(formData)
+        if (loginSignupText === 'Sign up') {
+            signupUser()
+        } else {
+            loginUser()
+        }
+    }
+
+    const signupUser = async () => {
+        try {
+            const response = await fetch('/signup', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(formData)
+            })
+            const data = await response.json()
+            console.log(data)
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    const loginUser = async () => {
+        try {
+            const response = await fetch('/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(formData)
+            })
+            const data = await response.json()
+            console.log(data)
+        } catch (error) {
+            console.log(error)
+        }
     }
 
     return (
