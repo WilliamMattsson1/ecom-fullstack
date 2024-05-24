@@ -105,22 +105,6 @@
     height: fit-content;
 }
 
-/* cost details */
-.cart-price-box {
-    padding: 1rem;
-    background-color: white;
-    border-radius: 12px;
-    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-}
-
-.cart-promo-container {
-    background-color: white;
-    border-radius: 12px;
-    padding: 1rem;
-    margin-top: 1.2rem;
-    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-}
-
 .cart-checkout-btn-container {
     display: flex;
     justify-content: center;

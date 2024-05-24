@@ -1,6 +1,8 @@
 import './CartItems.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faXmark } from '@fortawesome/free-solid-svg-icons'
+import CartPriceDetails from '../CartPriceDetails/CartPriceDetails'
+import CartPromoBox from '../CartPromoBox/CartPromoBox'
 
 const CartItems = () => {
     const products = [
@@ -78,29 +80,8 @@ const CartItems = () => {
                     </div>
                 </div>
                 <div className="cart-right-container">
-                    <div className="cart-price-box">
-                        <div className="cart-price-details">
-                            <p>Subtotal</p>
-                            <p>$802</p>
-                        </div>
-                        <div className="cart-price-details">
-                            <p>Shipping</p>
-                            <p>$10</p>
-                        </div>
-                        <div className="cart-price-details">
-                            <p>Total</p>
-                            <p>$812</p>
-                        </div>
-                        <button className="cart-price-button">Checkout</button>
-                    </div>
-                    <div className="cart-promo-container">
-                        <input
-                            className="cart-promo-input"
-                            type="text"
-                            placeholder="Promo code"
-                        />
-                        <button className="cart-promo-button">Apply</button>
-                    </div>
+                    <CartPriceDetails />
+                    <CartPromoBox />
                     <div className="cart-checkout-btn-container">
                         <button className="cart-checkout-btn">Checkout</button>
                     </div>
