@@ -5,9 +5,27 @@ import { faUser, faEnvelope, faLock } from '@fortawesome/free-solid-svg-icons'
 
 const LoginSignupBox = () => {
     const [loginSignupText, setLoginSignupText] = useState<string>('Sign up')
+    const [formData, setFormData] = useState({
+        name: '',
+        email: '',
+        password: ''
+    })
+
+    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setFormData({
+            ...formData,
+            [e.target.name]: e.target.value
+        })
+    }
+
+    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault()
+        console.log(formData)
+    }
+
     return (
         <div className="login-signup-box-container">
-            <form action="">
+            <form onSubmit={handleSubmit} action="">
                 <div className="login-signup-header">
                     <div className="login-signup-text">{loginSignupText}</div>
                     <hr className="hr-1" />
@@ -20,6 +38,7 @@ const LoginSignupBox = () => {
                                 icon={faUser}
                             />
                             <input
+                                onChange={handleInputChange}
                                 name="name"
                                 type="text"
                                 placeholder="Enter name"
@@ -36,6 +55,7 @@ const LoginSignupBox = () => {
                             icon={faEnvelope}
                         />
                         <input
+                            onChange={handleInputChange}
                             name="email"
                             type="email"
                             placeholder="Enter email"
@@ -48,6 +68,7 @@ const LoginSignupBox = () => {
                             icon={faLock}
                         />
                         <input
+                            onChange={handleInputChange}
                             name="password"
                             type="password"
                             placeholder="Enter password"
@@ -81,7 +102,9 @@ const LoginSignupBox = () => {
                     )}
                 </div>
                 <div className="login-signup-btn-container">
-                    <button className="login-signup-btn">Continue</button>
+                    <button type="submit" className="login-signup-btn">
+                        Continue
+                    </button>
                 </div>
             </form>
         </div>
