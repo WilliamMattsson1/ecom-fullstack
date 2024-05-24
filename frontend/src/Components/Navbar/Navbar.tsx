@@ -64,6 +64,7 @@ const Navbar = () => {
 
                 {isLoggedIn ? (
                     <Link
+                        onClick={scrollToTop}
                         to="/"
                         style={{ textDecoration: 'none', color: 'white' }}
                     >
@@ -73,6 +74,7 @@ const Navbar = () => {
                     </Link>
                 ) : (
                     <Link
+                        onClick={scrollToTop}
                         to="/login"
                         style={{ textDecoration: 'none', color: 'white' }}
                     >
@@ -82,7 +84,7 @@ const Navbar = () => {
             </ul>
             <div className="right-container">
                 <div className="cart-container">
-                    <Link to="/cart">
+                    <Link onClick={scrollToTop} to="/cart">
                         <FontAwesomeIcon
                             className="cart-icon"
                             icon={faCartShopping}
