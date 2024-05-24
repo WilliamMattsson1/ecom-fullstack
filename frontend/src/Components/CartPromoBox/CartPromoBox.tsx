@@ -1,5 +1,6 @@
 import './CartPromoBox.css'
 
+/* Att man kan trycka så öppnas den. Tänker liknande styling som checkout btn */
 const CartPromoBox = () => {
     return (
         <>
