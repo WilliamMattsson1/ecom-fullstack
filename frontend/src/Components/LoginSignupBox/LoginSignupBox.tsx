@@ -60,6 +60,7 @@ const LoginSignupBox = () => {
             console.log(data)
 
             if (response.ok) {
+                localStorage.setItem('token', data.token)
                 window.location.href = '/'
                 console.log('User logged in (from frontend)')
             }

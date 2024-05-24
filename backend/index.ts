@@ -4,6 +4,7 @@ import * as sqlite from 'sqlite'
 import { Database } from 'sqlite'
 import sqlite3 from 'sqlite3'
 import path from 'path'
+import jwt from 'jsonwebtoken'
 
 let database: Database
 ;(async () => {
@@ -70,9 +71,10 @@ app.post('/login', async (req, res) => {
     if (!user) {
         return res.status(401).json({ message: 'Invalid username or password' })
     } else {
+        const token = jwt.sign({ userId: user.id }, 'william-password321')
         return res
             .status(200)
-            .json({ message: 'Login successful (from backend)' })
+            .json({ message: 'Login successful (from backend)', token: token })
     }
 })
 

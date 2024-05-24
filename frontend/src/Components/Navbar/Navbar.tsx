@@ -50,12 +50,24 @@ const Navbar = () => {
                     </li>
                 ))}
 
-                <Link
-                    to="/login"
-                    style={{ textDecoration: 'none', color: 'white' }}
-                >
-                    <li className="login-link">Login</li>
-                </Link>
+                {localStorage.getItem('token') ? (
+                    <Link
+                        onClick={() => {
+                            localStorage.removeItem('token')
+                        }}
+                        to="/"
+                        style={{ textDecoration: 'none', color: 'white' }}
+                    >
+                        <li className="login-link">Log out</li>
+                    </Link>
+                ) : (
+                    <Link
+                        to="/login"
+                        style={{ textDecoration: 'none', color: 'white' }}
+                    >
+                        <li className="login-link">Login</li>
+                    </Link>
+                )}
             </ul>
             <div className="right-container">
                 <div className="cart-container">
