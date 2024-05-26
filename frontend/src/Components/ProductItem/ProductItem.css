@@ -29,3 +29,9 @@
 .product-link {
     text-decoration: none;
 }
+
+@media (max-width: 500px) {
+    .product {
+        min-width: 80%;
+    }
+}
