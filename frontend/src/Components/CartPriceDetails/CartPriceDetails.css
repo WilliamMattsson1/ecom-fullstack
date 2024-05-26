@@ -4,3 +4,29 @@
     border-radius: 12px;
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
+
+.cart-price-detail-title {
+    font-size: 1.6rem;
+    margin-bottom: 0.8rem;
+    color: #333;
+}
+
+.cart-price-detail {
+    display: flex;
+    justify-content: space-between;
+}
+
+.cart-price-detail-left {
+    font-size: 1.2rem;
+}
+
+.cart-price-detail-right {
+    font-size: 1.2rem;
+}
+
+.total-sum {
+    border-top: 2px solid #667;
+    margin-top: 1rem;
+    padding: 0.2rem 0;
+    font-weight: 600;
+}
