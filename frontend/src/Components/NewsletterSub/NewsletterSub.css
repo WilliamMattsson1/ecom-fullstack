@@ -84,3 +84,39 @@
     border-radius: 0 6px 6px 0;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
 }
+
+@media (max-width: 700px) {
+    .title {
+        font-size: 1.8rem;
+    }
+
+    .newsletter-p {
+        font-size: 1.1rem;
+    }
+
+    .newsletter-box {
+        padding: 2.8rem;
+        width: 100%;
+        border-radius: 0;
+    }
+    .newsletter-box h3 {
+        font-size: 1.5rem;
+    }
+
+    .newsletter-box p {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 500px) {
+    .newsletter-box {
+        padding: 3rem 0.8rem;
+    }
+    .newsletter-box h3 {
+        font-size: 1.2rem;
+    }
+
+    .newsletter-box p {
+        font-size: 0.9rem;
+    }
+}
