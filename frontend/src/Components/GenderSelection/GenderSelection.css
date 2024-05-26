@@ -83,3 +83,70 @@
 .category-text button:hover {
     background-color: #555;
 }
+
+@media (max-width: 900px) {
+    .products-categories {
+        width: 80%;
+    }
+
+    .category-text h3 {
+        font-size: 1.6rem;
+    }
+
+    .category-text p {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 700px) {
+    .products-title {
+        font-size: 1.8rem;
+        margin-top: 0.6rem;
+    }
+
+    .products-p {
+        font-size: 1.1rem;
+    }
+    .products-categories {
+        width: 100%;
+        border-radius: 0;
+    }
+
+    .category-text h3 {
+        font-size: 1.4rem;
+    }
+
+    .category-text p {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 500px) {
+    .products-categories {
+        margin-top: 0.5rem;
+    }
+    .products-category {
+        flex-direction: column;
+        padding-bottom: 1.6rem;
+    }
+
+    .category-image {
+        min-width: 100%;
+    }
+
+    .category-image img {
+        max-height: 40vh;
+    }
+
+    .category-text p {
+        margin-top: 4px;
+    }
+
+    .category-text button {
+        margin-top: 8px;
+    }
+
+    .womens-clothing {
+        flex-direction: column-reverse;
+    }
+}
