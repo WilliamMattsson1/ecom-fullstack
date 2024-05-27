@@ -1,4 +1,4 @@
-import React, { createContext, ReactNode } from 'react'
+import { createContext } from 'react'
 
 type ScrollContextType = {
     scrollToTop: () => void
@@ -6,9 +6,11 @@ type ScrollContextType = {
 
 const ScrollContext = createContext<ScrollContextType | undefined>(undefined)
 
-export const ScrollProvider: React.FC<{ children: ReactNode }> = ({
-    children
-}) => {
+type ScrollProviderProps = {
+    children: React.ReactNode
+}
+
+export const ScrollProvider = ({ children }: ScrollProviderProps) => {
     const scrollToTop = () => {
         window.scrollTo({
             top: 0,
