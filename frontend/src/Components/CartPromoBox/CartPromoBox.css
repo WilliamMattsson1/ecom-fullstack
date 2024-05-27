@@ -50,3 +50,10 @@
 .accordion-content button:hover {
     background-color: #555;
 }
+
+@media (max-width: 500px) {
+    .cart-promo-box {
+        border-radius: 0;
+        margin-top: 1rem;
+    }
+}

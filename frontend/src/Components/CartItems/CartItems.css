@@ -1,6 +1,6 @@
 .cart-items {
     background-color: white;
-    width: 60%;
+    width: 80%;
     height: fit-content;
     border-radius: 12px;
     padding: 1rem;
@@ -59,8 +59,8 @@
 }
 
 .cart-item-image {
-    width: 80px;
-    height: 80px;
+    width: 50px;
+    height: 50px;
     border-radius: 8px;
     object-fit: cover;
 }
@@ -95,4 +95,20 @@
 .cart-remove-icon {
     cursor: pointer;
     font-size: 28px;
+}
+
+@media (max-width: 1000px) {
+    .cart-items {
+        width: 100%;
+    }
+}
+
+@media (max-width: 500px) {
+    .cart-items {
+        width: 100%;
+        border-radius: 0;
+    }
+    .cart-items-titles {
+        display: none;
+    }
 }

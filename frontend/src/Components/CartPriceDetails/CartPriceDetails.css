@@ -30,3 +30,9 @@
     padding: 0.2rem 0;
     font-weight: 600;
 }
+
+@media (max-width: 500px) {
+    .cart-price-box {
+        border-radius: 0;
+    }
+}

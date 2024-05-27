@@ -34,3 +34,38 @@
 .cart-checkout-btn:hover {
     background-color: #555;
 }
+
+@media (max-width: 1000px) {
+    .cart-items-container {
+        flex-direction: column;
+    }
+
+    .cart-right-container {
+        width: 80%;
+        margin: auto;
+    }
+}
+
+@media (max-width: 500px) {
+    .cart-items-container {
+        width: 100%;
+        border-radius: 0;
+        margin-top: 0;
+        gap: 1rem;
+    }
+
+    .cart-right-container {
+        width: 100%;
+    }
+
+    .cart-checkout-btn-container {
+        width: 100%;
+        margin: auto;
+        margin-top: 1rem;
+    }
+
+    .cart-checkout-btn {
+        border-radius: 0;
+        font-size: 1.1rem;
+    }
+}

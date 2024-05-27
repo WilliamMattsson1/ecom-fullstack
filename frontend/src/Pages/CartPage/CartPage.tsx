@@ -13,10 +13,16 @@ const CartPage = () => {
             <div className="cart-items-container">
                 <CartItems />
                 <div className="cart-right-container">
-                    <CartPriceDetails />
-                    <CartPromoBox />
-                    <div className="cart-checkout-btn-container">
-                        <button className="cart-checkout-btn">Checkout</button>
+                    <div className="">
+                        <CartPriceDetails />
+                    </div>
+                    <div>
+                        <CartPromoBox />
+                        <div className="cart-checkout-btn-container">
+                            <button className="cart-checkout-btn">
+                                Checkout
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
