@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 
 import { ScrollProvider } from './Context/ScrollContext.tsx'
+import { ProductsProvider } from './Context/ProductsContext.tsx'
 
 import App from './App.tsx'
 
@@ -59,8 +60,10 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
     <React.StrictMode>
-        <ScrollProvider>
-            <RouterProvider router={router} />
-        </ScrollProvider>
+        <ProductsProvider>
+            <ScrollProvider>
+                <RouterProvider router={router} />
+            </ScrollProvider>
+        </ProductsProvider>
     </React.StrictMode>
 )
