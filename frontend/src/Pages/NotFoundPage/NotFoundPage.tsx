@@ -8,14 +8,14 @@ const NotFoungPage = () => {
     return (
         <div>
             <Navbar />
-            <div className="container">
+            <div className="notfound-container">
                 <FontAwesomeIcon
                     className="error-icon"
                     icon={faCircleExclamation}
                 />
                 <h2>Sorry, the page you are looking for could not be found.</h2>
                 <p>Go back to the homepage</p>
-                <Link className="btn-link" to="/">
+                <Link className="notfound-btn-link" to="/">
                     <button>Home</button>
                 </Link>
             </div>
