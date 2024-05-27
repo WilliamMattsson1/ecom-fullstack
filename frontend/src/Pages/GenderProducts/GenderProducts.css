@@ -15,3 +15,14 @@
     width: 90%;
     max-width: 1400px;
 }
+
+@media (max-width: 700px) {
+    .gender-products-title {
+        font-size: 1.8rem;
+        margin-top: 0.6rem;
+    }
+
+    .gender-products {
+        margin-top: 0.6rem;
+    }
+}
