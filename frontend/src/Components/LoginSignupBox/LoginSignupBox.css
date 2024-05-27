@@ -98,3 +98,53 @@
 .login-signup-btn:hover {
     background-color: #555;
 }
+
+@media (max-width: 900px) {
+    .login-signup-box-container {
+        width: 80%;
+    }
+}
+
+@media (max-width: 500px) {
+    .login-signup-box-container {
+        width: 100%;
+        border-radius: 0;
+    }
+
+    .login-signup-header {
+        margin-top: 1rem;
+    }
+
+    .login-signup-text {
+        font-size: 1.8rem;
+    }
+
+    .login-signup-inputs {
+        margin-top: 1.6rem;
+        gap: 1rem;
+    }
+
+    .login-signup-input {
+        height: 60px;
+    }
+
+    .login-signup-input .login-signup-icon {
+        font-size: 20px;
+    }
+
+    .login-signup-input input {
+        font-size: 1.1rem;
+    }
+
+    .login-signup-change {
+        margin: 1.4rem auto;
+    }
+
+    .login-signup-btn-container {
+        margin: 20px auto;
+    }
+
+    .login-signup-btn {
+        font-size: 1.1rem;
+    }
+}
