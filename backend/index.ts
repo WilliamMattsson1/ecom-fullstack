@@ -78,6 +78,26 @@ app.post('/login', async (req, res) => {
     }
 })
 
+app.post('/cart/add', async (req, res) => {
+    const { userId, productId } = req.body
+
+    if (!userId || !productId) {
+        return res
+            .status(400)
+            .json({ message: 'User ID and Product ID are required' })
+    }
+
+    try {
+        await database.run(
+            `INSERT INTO cartItems (user_id, product_id) VALUES (?, ?)`,
+            [userId, productId]
+        )
+        res.status(201).json({ message: 'Product added to cart' })
+    } catch (error) {
+        res.status(500).json({ message: 'Error adding product to cart', error })
+    }
+})
+
 const port = process.env.PORT || 3000
 app.listen(port, () => {
     console.log(`Server is listening on port ${port}`)
