@@ -41,7 +41,7 @@ const ProductDetails = ({ product }: { product: Product }) => {
                         elit. Itaque nostr
                     </p>
                 </div>
-                <h6>{product.price} kr</h6>
+                <h6>${product.price}</h6>
                 <button className="add-to-cart-btn">Add to cart</button>
             </div>
         </div>

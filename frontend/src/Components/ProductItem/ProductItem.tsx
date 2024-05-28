@@ -23,7 +23,7 @@ const ProductItem = (props: Product) => {
             >
                 <img src={props.image} alt="product image" />
                 <h2>{props.name}</h2>
-                <p>{props.price} kr</p>
+                <p>${props.price}</p>
             </Link>
         </div>
     )
