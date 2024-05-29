@@ -1,12 +1,16 @@
 import './CartItems.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faXmark } from '@fortawesome/free-solid-svg-icons'
-import { useContext } from 'react'
+import { useContext, useState } from 'react'
 import { CartContext } from '../../Context/CartContext'
 import useProducts from '../../Context/useProducts'
 import { Link } from 'react-router-dom'
+import PopupCartRemoved from '../PopupCartRemoved/PopupCartRemoved'
 
 const CartItems = () => {
+    const [showPopup, setShowPopup] = useState(false)
+    const [popupProduct, setPopupProduct] = useState('')
+
     const { allProducts } = useProducts()
     const { cartItems, getTotalCartItems, removeFromCart } =
         useContext(CartContext)
@@ -16,6 +20,11 @@ const CartItems = () => {
         productId: number
     ) => {
         e.preventDefault()
+        const product = allProducts.find((p) => p.id === productId)
+        if (product) {
+            setPopupProduct(product.name)
+            setShowPopup(true)
+        }
         removeFromCart(productId)
     }
 
@@ -84,6 +93,12 @@ const CartItems = () => {
                     })}
                 </div>
             </div>
+            {showPopup && (
+                <PopupCartRemoved
+                    product={popupProduct}
+                    onClose={() => setShowPopup(false)}
+                />
+            )}
         </>
     )
 }

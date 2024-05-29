@@ -1,14 +1,14 @@
+import './PopupCartRemoved.css'
 import { useEffect } from 'react'
-import './PopupCartAdded.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCheck, faX } from '@fortawesome/free-solid-svg-icons'
+import { faTrashCan, faX } from '@fortawesome/free-solid-svg-icons'
 
 interface PopupCartAddedProps {
     product: string
     onClose: () => void
 }
 
-const PopupCartAdded = ({ product, onClose }: PopupCartAddedProps) => {
+const PopupCartRemoved = ({ product, onClose }: PopupCartAddedProps) => {
     useEffect(() => {
         const timer = setTimeout(() => {
             onClose()
@@ -18,16 +18,18 @@ const PopupCartAdded = ({ product, onClose }: PopupCartAddedProps) => {
             clearTimeout(timer)
         }
     }, [onClose])
-
     return (
-        <div className="popup-cart-status-container">
+        <div
+            className="popup-cart-status-container"
+            style={{ backgroundColor: 'red' }}
+        >
             <div className="popup-cart-text">
-                <FontAwesomeIcon className="popup-icon" icon={faCheck} />{' '}
-                <p>{product} added to cart</p>
+                <FontAwesomeIcon className="popup-icon" icon={faTrashCan} />
+                <p>{product} removed from cart</p>
             </div>
             <FontAwesomeIcon className="x-icon" icon={faX} onClick={onClose} />
         </div>
     )
 }
 
-export default PopupCartAdded
+export default PopupCartRemoved
