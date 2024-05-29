@@ -1,6 +1,7 @@
 import './ProductDetails.css'
-import { useContext } from 'react'
+import { useContext, useState } from 'react'
 import { CartContext } from '../../Context/CartContext'
+import PopupCartAdded from '../PopupCartAdded/PopupCartAdded'
 
 interface Product {
     id: number
@@ -13,6 +14,15 @@ interface Product {
 
 const ProductDetails = ({ product }: { product: Product }) => {
     const { addToCart } = useContext(CartContext)
+
+    const [showPopup, setShowPopup] = useState(false)
+    const [popupProduct, setPopupProduct] = useState('')
+
+    const handleAddToCart = () => {
+        addToCart(product.id)
+        setShowPopup(true)
+        setPopupProduct(product.name)
+    }
 
     return (
         <div className="product-details">
@@ -44,13 +54,16 @@ const ProductDetails = ({ product }: { product: Product }) => {
                     </p>
                 </div>
                 <h6>${product.price}</h6>
-                <button
-                    className="add-to-cart-btn"
-                    onClick={() => addToCart(product.id)}
-                >
+                <button className="add-to-cart-btn" onClick={handleAddToCart}>
                     Add to cart
                 </button>
             </div>
+            {showPopup && (
+                <PopupCartAdded
+                    product={popupProduct}
+                    onClose={() => setShowPopup(false)}
+                />
+            )}
         </div>
     )
 }

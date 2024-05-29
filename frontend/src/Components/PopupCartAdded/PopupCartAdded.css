@@ -1,0 +1,51 @@
+.popup-cart-status-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #70e000;
+    color: black;
+    font-weight: 500;
+    padding: 1.4rem 2rem;
+    border-radius: 12px;
+    z-index: 5;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.popup-cart-text {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.8rem;
+    margin-right: 1rem;
+}
+
+.popup-check-icon {
+    font-size: 2rem;
+    color: #036103;
+    opacity: 0.4;
+}
+
+.popup-cart-text p {
+    color: #333;
+}
+
+.x-icon {
+    position: absolute;
+    top: 13px;
+    right: 13px;
+    cursor: pointer;
+    color: #333;
+}
+
+@media (max-width: 600px) {
+    .popup-cart-status-container {
+        width: 90%;
+    }
+
+    .popup-cart-status-container p {
+        font-size: 14px;
+    }
+}
