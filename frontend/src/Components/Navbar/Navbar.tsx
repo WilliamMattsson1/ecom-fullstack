@@ -2,7 +2,7 @@ import { useState, useEffect, useContext } from 'react'
 import { Link, NavLink } from 'react-router-dom'
 import './Navbar.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCartShopping } from '@fortawesome/free-solid-svg-icons'
+import { faCartShopping, faHammer } from '@fortawesome/free-solid-svg-icons'
 import logo from '../../assets/logo.png'
 import useScroll from '../../Context/useScroll'
 import { CartContext } from '../../Context/CartContext'
@@ -26,8 +26,7 @@ const Navbar = () => {
         { url: '/products', text: 'Products' },
         { url: '/about', text: 'About' }
     ]
-
-    const adminLink: LinkItem = { url: '/admin', text: 'Admin' } // Länk till admin-sidan
+    const adminLink: LinkItem = { url: '/admin', text: 'Admin' }
 
     const toggleMenu = () => {
         setIsMenuOpen(!isMenuOpen)
@@ -108,8 +107,18 @@ const Navbar = () => {
                 )}
             </ul>
             {isAdmin && (
-                <Link to={adminLink.url} className="admin-link">
-                    {adminLink.text}
+                <Link
+                    to={adminLink.url}
+                    className="admin-link-tag"
+                    style={{ textDecoration: 'none', color: 'black' }}
+                >
+                    <div className="admin-link-container">
+                        <FontAwesomeIcon
+                            className="admin-icon"
+                            icon={faHammer}
+                        />
+                        <p>{adminLink.text}</p>
+                    </div>
                 </Link>
             )}
             <div className="right-container">

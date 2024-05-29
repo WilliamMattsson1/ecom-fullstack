@@ -22,7 +22,7 @@ app.use(cors())
 app.use(express.json())
 app.use(express.static(path.resolve(__dirname, 'dist')))
 
-app.get('/products', async (_req, res) => {
+app.get('/allproducts', async (_req, res) => {
     let result = await database.all('SELECT * FROM products')
     console.log(result)
     res.json(result)

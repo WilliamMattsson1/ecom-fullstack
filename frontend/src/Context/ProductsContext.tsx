@@ -27,7 +27,7 @@ const ProductsProvider = ({ children }: ProductsContextProps) => {
 
     const fetchAllProducts = async () => {
         try {
-            const response = await fetch('/products')
+            const response = await fetch('/allproducts')
             const data = await response.json()
             setAllProducts(data)
         } catch (error) {
