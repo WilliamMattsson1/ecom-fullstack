@@ -19,11 +19,15 @@ const Navbar = () => {
     const [isLoggedIn, setIsLoggedIn] = useState<boolean>(
         localStorage.getItem('token') ? true : false
     )
+    const [isAdmin, setIsAdmin] = useState<boolean>(false)
+
     const links: LinkItem[] = [
         { url: '/', text: 'Home' },
         { url: '/products', text: 'Products' },
         { url: '/about', text: 'About' }
     ]
+
+    const adminLink: LinkItem = { url: '/admin', text: 'Admin' } // Länk till admin-sidan
 
     const toggleMenu = () => {
         setIsMenuOpen(!isMenuOpen)
@@ -31,11 +35,31 @@ const Navbar = () => {
 
     useEffect(() => {
         setIsLoggedIn(localStorage.getItem('token') ? true : false)
+        if (isLoggedIn) {
+            checkAdminStatus()
+        }
     }, [isLoggedIn])
+
+    const checkAdminStatus = async () => {
+        try {
+            const token = localStorage.getItem('token')
+            const response = await fetch('/checkadmin', {
+                method: 'GET',
+                headers: {
+                    token: token as string
+                }
+            })
+            const data = await response.json()
+            setIsAdmin(data.isAdmin)
+        } catch (error) {
+            console.error('Error checking admin status:', error)
+        }
+    }
 
     const handleLogout = () => {
         localStorage.removeItem('token')
         setIsLoggedIn(false)
+        setIsAdmin(false)
         setCartItems({})
     }
 
@@ -83,6 +107,11 @@ const Navbar = () => {
                     </Link>
                 )}
             </ul>
+            {isAdmin && (
+                <Link to={adminLink.url} className="admin-link">
+                    {adminLink.text}
+                </Link>
+            )}
             <div className="right-container">
                 <div className="cart-container">
                     <Link onClick={scrollToTop} to="/cart">

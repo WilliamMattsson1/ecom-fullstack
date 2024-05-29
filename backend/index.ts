@@ -170,6 +170,29 @@ app.post('/getcart', async (req, res) => {
     }
 })
 
+app.get('/checkadmin', async (req, res) => {
+    const token = req.headers.token as string
+    try {
+        const decoded = jwt.verify(token, 'william-password321') as {
+            userId: number
+        }
+        const userId = decoded.userId
+
+        const query = 'SELECT * FROM adminUsers WHERE user_id = ?'
+        const admin = await database.get(query, [userId])
+
+        if (admin) {
+            return res.status(200).json({ isAdmin: true })
+        } else {
+            return res.status(200).json({ isAdmin: false })
+        }
+    } catch (error) {
+        return res
+            .status(500)
+            .json({ message: 'Error checking admin status', error })
+    }
+})
+
 const port = process.env.PORT || 3000
 app.listen(port, () => {
     console.log(`Server is listening on port ${port}`)

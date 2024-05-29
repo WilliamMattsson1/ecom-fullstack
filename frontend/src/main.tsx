@@ -1,12 +1,9 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
-
 import { ScrollProvider } from './Context/ScrollContext.tsx'
 import { ProductsProvider } from './Context/ProductsContext.tsx'
-
 import App from './App.tsx'
-
 import './index.css'
 import AboutPage from './Pages/AboutPage/AboutPage.tsx'
 import NotFoundPage from './Pages/NotFoundPage/NotFoundPage.tsx'
@@ -17,6 +14,7 @@ import ProductDetailsPage from './Pages/ProductDetailsPage/ProductDetailsPage.ts
 import ContactPage from './Pages/ContactPage/ContactPage.tsx'
 import GenderProducts from './Pages/GenderProducts/GenderProducts.tsx'
 import CartContextProvider from './Context/CartContext.tsx'
+import AdminPage from './Pages/AdminPage/AdminPage.tsx'
 
 const router = createBrowserRouter([
     {
@@ -56,6 +54,10 @@ const router = createBrowserRouter([
     {
         path: '/contact',
         element: <ContactPage />
+    },
+    {
+        path: '/admin',
+        element: <AdminPage />
     }
 ])
 
