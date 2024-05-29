@@ -64,7 +64,7 @@ const CartItems = () => {
                                                     {product.name}
                                                 </p>
                                                 <p className="cart-item-info-price">
-                                                    ${product.price}
+                                                    ${product.price.toFixed(2)}
                                                 </p>
                                             </div>
                                         </div>
@@ -72,7 +72,10 @@ const CartItems = () => {
                                             {quantity}
                                         </p>
                                         <p className="cart-item-info-total">
-                                            ${product.price * quantity}
+                                            $
+                                            {(product.price * quantity).toFixed(
+                                                2
+                                            )}
                                         </p>
                                         <FontAwesomeIcon
                                             onClick={(e) =>

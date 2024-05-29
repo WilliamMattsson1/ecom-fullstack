@@ -14,7 +14,7 @@ const CartPriceDetails = () => {
             <div className="cart-price-detail">
                 <p className="cart-price-detail-left">Subtotal</p>
                 <p className="cart-price-detail-right">
-                    {getTotalCartAmount()}
+                    {getTotalCartAmount().toFixed(2)}
                 </p>
             </div>
             <div className="cart-price-detail">
@@ -24,7 +24,7 @@ const CartPriceDetails = () => {
             <div className="cart-price-detail total-sum">
                 <p className="cart-price-detail-left">Total</p>
                 <p className="cart-price-detail-right">
-                    ${getTotalCartAmount() + shipping}
+                    ${(getTotalCartAmount() + shipping).toFixed(2)}
                 </p>
             </div>
         </div>
