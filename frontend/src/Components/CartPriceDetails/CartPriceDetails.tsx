@@ -3,9 +3,7 @@ import { useContext } from 'react'
 import { CartContext } from '../../Context/CartContext'
 
 const CartPriceDetails = () => {
-    const { getTotalCartAmount } = useContext(CartContext) || {
-        getTotalCartAmount: () => 0
-    }
+    const { getTotalCartAmount } = useContext(CartContext)
     const shipping: number = 2.99
 
     return (

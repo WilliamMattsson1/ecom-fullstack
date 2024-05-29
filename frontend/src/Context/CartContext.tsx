@@ -10,7 +10,17 @@ interface CartContextType {
     getTotalCartItems: () => number
 }
 
-export const CartContext = createContext<CartContextType | null>(null)
+/* Adding default values to not handle in components */
+const defaultCartContext: CartContextType = {
+    cartItems: {},
+    setCartItems: () => {},
+    addToCart: () => {},
+    removeFromCart: () => {},
+    getTotalCartAmount: () => 0,
+    getTotalCartItems: () => 0
+}
+
+export const CartContext = createContext<CartContextType>(defaultCartContext)
 
 const getDefaultCart = (): Record<number, number> => {
     // Skapar en tom cart med 100 produktId som keys och 0 som value (quantity)

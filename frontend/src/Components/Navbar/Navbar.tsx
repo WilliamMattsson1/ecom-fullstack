@@ -13,13 +13,7 @@ interface LinkItem {
 }
 
 const Navbar = () => {
-    const { getTotalCartItems } = useContext(CartContext) || {
-        getTotalCartItems: () => 0
-    }
-
-    const { setCartItems } = useContext(CartContext) || {
-        setCartItems: () => {}
-    }
+    const { getTotalCartItems, setCartItems } = useContext(CartContext)
 
     const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false)
     const [isLoggedIn, setIsLoggedIn] = useState<boolean>(

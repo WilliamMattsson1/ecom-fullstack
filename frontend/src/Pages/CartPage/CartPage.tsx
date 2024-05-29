@@ -11,9 +11,7 @@ import './CartPage.css'
 import { CartContext } from '../../Context/CartContext'
 
 const CartPage = () => {
-    const { getTotalCartItems } = useContext(CartContext) || {
-        getTotalCartItems: () => 0
-    }
+    const { getTotalCartItems } = useContext(CartContext)
 
     return (
         <>

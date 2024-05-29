@@ -12,9 +12,7 @@ interface Product {
 }
 
 const ProductDetails = ({ product }: { product: Product }) => {
-    const { addToCart } = useContext(CartContext) || {
-        addToCart: () => {}
-    }
+    const { addToCart } = useContext(CartContext)
 
     return (
         <div className="product-details">

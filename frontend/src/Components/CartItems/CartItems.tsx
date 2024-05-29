@@ -8,16 +8,8 @@ import { Link } from 'react-router-dom'
 
 const CartItems = () => {
     const { allProducts } = useProducts()
-    const { cartItems } = useContext(CartContext) || {
-        getDefaultCart: () => ({})
-    }
-    const { getTotalCartItems } = useContext(CartContext) || {
-        getTotalCartItems: () => 0
-    }
-
-    const { removeFromCart } = useContext(CartContext) || {
-        removeFromCart: () => {}
-    }
+    const { cartItems, getTotalCartItems, removeFromCart } =
+        useContext(CartContext)
 
     const handleRemoveClick = (
         e: React.MouseEvent<SVGSVGElement>,
