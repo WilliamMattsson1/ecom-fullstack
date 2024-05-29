@@ -16,6 +16,7 @@ import CartPage from './Pages/CartPage/CartPage.tsx'
 import ProductDetailsPage from './Pages/ProductDetailsPage/ProductDetailsPage.tsx'
 import ContactPage from './Pages/ContactPage/ContactPage.tsx'
 import GenderProducts from './Pages/GenderProducts/GenderProducts.tsx'
+import CartContextProvider from './Context/CartContext.tsx'
 
 const router = createBrowserRouter([
     {
@@ -61,9 +62,11 @@ const router = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById('root')!).render(
     <React.StrictMode>
         <ProductsProvider>
-            <ScrollProvider>
-                <RouterProvider router={router} />
-            </ScrollProvider>
+            <CartContextProvider>
+                <ScrollProvider>
+                    <RouterProvider router={router} />
+                </ScrollProvider>
+            </CartContextProvider>
         </ProductsProvider>
     </React.StrictMode>
 )
