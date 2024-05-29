@@ -8,6 +8,9 @@ import SimilarProducts from '../../Components/SimilarProducts/SimilarProducts'
 import './ProductDetailsPage.css'
 import { useParams } from 'react-router-dom'
 import useProducts from '../../Context/useProducts'
+import { Link } from 'react-router-dom'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faTriangleExclamation } from '@fortawesome/free-solid-svg-icons'
 
 const ProductDetailsPage = () => {
     const { allProducts } = useProducts()
@@ -41,10 +44,36 @@ const ProductDetailsPage = () => {
         <>
             <Navbar />
             <OfferBanner />
-            <BreadCrumbs />
-            {rightProduct && <ProductDetails product={rightProduct} />}
-            <SimilarProducts products={similarProductsFour} />
-            <InfoBox />
+
+            {rightProduct ? (
+                <>
+                    <BreadCrumbs />
+                    <ProductDetails product={rightProduct} />
+                    <SimilarProducts products={similarProductsFour} />
+                    <InfoBox />
+                </>
+            ) : (
+                <>
+                    <div className="notfound-product-container">
+                        <FontAwesomeIcon
+                            className="error-icon"
+                            icon={faTriangleExclamation}
+                        />
+                        <h2>
+                            Sorry, the product you are looking for could not be
+                            found.
+                        </h2>
+                        <p>Go back to the all products</p>
+                        <Link
+                            className="notfound-product-btn-link"
+                            to="/products"
+                        >
+                            <button className="not-found-btn">Products</button>
+                        </Link>
+                    </div>
+                </>
+            )}
+
             <Footer />
         </>
     )

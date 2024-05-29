@@ -42,7 +42,7 @@
     transition: background-color 0.3s ease;
 }
 
-.notfoundcontainer button:hover {
+.notfound-container button:hover {
     background-color: #555;
 }
 

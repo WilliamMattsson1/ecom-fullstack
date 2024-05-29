@@ -1,0 +1,65 @@
+.notfound-product-container {
+    height: 70vh;
+    width: 90%;
+    margin: auto;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.error-icon {
+    font-size: 50px;
+    margin-bottom: 1rem;
+    color: #333;
+}
+
+.notfound-product-container h2 {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 6px;
+}
+
+.notfound-product-container p {
+    font-size: 1.4rem;
+    color: #667;
+    font-weight: 500;
+}
+
+.notfound-product-container button {
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: #fff;
+    background-color: #333;
+    border: none;
+    cursor: pointer;
+    border-radius: 8px;
+    width: 160px;
+    height: 50px;
+    margin-top: 0.8rem;
+    transition: background-color 0.3s ease;
+}
+
+.notfound-product-container button:hover {
+    background-color: #555;
+}
+
+.notfound-product-container .-notfound-product-btn-link {
+    text-decoration: none;
+    color: #fff;
+}
+
+@media (max-width: 600px) {
+    .notfound-product-container {
+        width: 89%;
+    }
+    .notfound-product-container h2 {
+        font-size: 1.6rem;
+    }
+
+    .notfound-product-container p {
+        font-size: 1.1rem;
+    }
+}
