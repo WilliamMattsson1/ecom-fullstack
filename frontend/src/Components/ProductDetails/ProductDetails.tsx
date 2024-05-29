@@ -1,6 +1,6 @@
 import './ProductDetails.css'
-
-/* Ska kunna lägga till item i cart */
+import { useContext } from 'react'
+import { CartContext } from '../../Context/CartContext'
 
 interface Product {
     id: number
@@ -12,6 +12,10 @@ interface Product {
 }
 
 const ProductDetails = ({ product }: { product: Product }) => {
+    const { addToCart } = useContext(CartContext) || {
+        addToCart: () => {}
+    }
+
     return (
         <div className="product-details">
             <div className="product-details-img-container">
@@ -42,7 +46,12 @@ const ProductDetails = ({ product }: { product: Product }) => {
                     </p>
                 </div>
                 <h6>${product.price}</h6>
-                <button className="add-to-cart-btn">Add to cart</button>
+                <button
+                    className="add-to-cart-btn"
+                    onClick={() => addToCart(product.id)}
+                >
+                    Add to cart
+                </button>
             </div>
         </div>
     )
