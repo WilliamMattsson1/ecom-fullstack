@@ -106,7 +106,7 @@ app.post('/cart/add', async (req, res) => {
     }
 })
 
-app.post('/removefromcart', async (req, res) => {
+app.post('/cart/remove', async (req, res) => {
     const { productId } = req.body
 
     const token = req.headers.token as string

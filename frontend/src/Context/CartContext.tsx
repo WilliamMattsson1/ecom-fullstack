@@ -43,21 +43,30 @@ const CartContextProvider = ({ children }: CartContextProps) => {
 
     // Om det finns token, alltså inloggning, hämta cartItems från databasen för den inloggade användaren
     useEffect(() => {
-        if (localStorage.getItem('token')) {
-            fetch('/getcart', {
-                method: 'POST',
-                headers: {
-                    token: `${localStorage.getItem('token')}`,
-                    'Content-Type': 'application/json'
-                },
-                body: ''
-            })
-                .then((res) => res.json())
-                .then((data) => setCartItems(data))
+        const fetchCartItems = async () => {
+            if (localStorage.getItem('token')) {
+                try {
+                    const response = await fetch('/getcart', {
+                        method: 'POST',
+                        headers: {
+                            token: `${localStorage.getItem('token')}`,
+                            'Content-Type': 'application/json'
+                        },
+                        body: ''
+                    })
+                    const data = await response.json()
+                    console.log('Data from fetchCartItems:', data)
+                    setCartItems(data)
+                } catch (error) {
+                    console.error('Error when fetching cart', error)
+                }
+            }
         }
+
+        fetchCartItems()
     }, [])
 
-    const addToCart = (productId: number): void => {
+    const addToCart = async (productId: number): Promise<void> => {
         // Produkterna lägga till i cartItems
         setCartItems((prev) => {
             const newCartItems = { ...prev }
@@ -71,19 +80,21 @@ const CartContextProvider = ({ children }: CartContextProps) => {
 
         // Om användaren är inloggad, lägg till produkten i databasen. Läggs i tabellen cartItems
         if (localStorage.getItem('token')) {
-            fetch('/cart/add', {
-                method: 'POST',
-                headers: {
-                    token: `${localStorage.getItem('token')}`,
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ productId: productId })
-            })
-                .then((res) => res.json())
-                .then((data) => console.log(data))
-                .catch((error) =>
-                    console.error('Error adding product to cart:', error)
-                )
+            try {
+                const response = await fetch('/cart/add', {
+                    method: 'POST',
+                    headers: {
+                        token: `${localStorage.getItem('token')}`,
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ productId: productId })
+                })
+
+                const data = await response.json()
+                console.log(data) /* Product added to cart */
+            } catch (error) {
+                console.error('Error adding product to cart:', error)
+            }
         } else {
             console.log('User is not logged in')
             console.log('Non user added:', productId)
@@ -91,7 +102,7 @@ const CartContextProvider = ({ children }: CartContextProps) => {
         }
     }
 
-    const removeFromCart = (productId: number): void => {
+    const removeFromCart = async (productId: number): Promise<void> => {
         // Ta bort alla av den productId
         setCartItems((prev) => {
             const newCartItems = { ...prev }
@@ -102,16 +113,21 @@ const CartContextProvider = ({ children }: CartContextProps) => {
         })
         // Om användaren är inloggad, ta bort produkten från databasen. Tas bort från tabellen cartItems
         if (localStorage.getItem('token')) {
-            fetch('/removefromcart', {
-                method: 'POST',
-                headers: {
-                    token: `${localStorage.getItem('token')}`,
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ productId: productId })
-            })
-                .then((res) => res.json())
-                .then((data) => console.log(data))
+            try {
+                const response = await fetch('/cart/remove', {
+                    method: 'POST',
+                    headers: {
+                        token: `${localStorage.getItem('token')}`,
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ productId })
+                })
+
+                const data = await response.json()
+                console.log(data) // Product removed from cart, ID
+            } catch (error) {
+                console.error('Error removing product from cart:', error)
+            }
         }
     }
 
