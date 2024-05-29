@@ -138,6 +138,38 @@ app.post('/removefromcart', async (req, res) => {
     }
 })
 
+// Get the cart items for the logged in user
+app.post('/getcart', async (req, res) => {
+    const token = req.headers.token as string
+    const decoded = jwt.verify(token, 'william-password321') as {
+        userId: number
+    }
+    const userId = decoded.userId
+
+    try {
+        // Get all the cart items for the userId
+        const result = await database.all(
+            'SELECT * FROM cartItems WHERE user_id = ?',
+            [userId]
+        )
+
+        console.log('Här är items innan forEachen:', result)
+        // Create an object with the product_id as the key and the quantity as the value
+        const cartItems: Record<number, number> = {}
+        result.forEach((item) => {
+            cartItems[item.product_id] = cartItems[item.product_id]
+                ? cartItems[item.product_id] + 1
+                : 1
+        })
+        console.log('Här är cartItems efter forEachen:', cartItems)
+
+        return res.status(200).json(cartItems)
+    } catch (error) {
+        console.error('Error fetching cart items:', error)
+        return res.status(500).json({ message: 'Error fetching cart items' })
+    }
+})
+
 const port = process.env.PORT || 3000
 app.listen(port, () => {
     console.log(`Server is listening on port ${port}`)
