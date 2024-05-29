@@ -4,6 +4,7 @@ interface CartContextType {
     cartItems: Record<number, number>
     setCartItems: React.Dispatch<React.SetStateAction<Record<number, number>>>
     addToCart: (productId: number) => void
+    removeFromCart: (productId: number) => void
 }
 
 export const CartContext = createContext<CartContextType | null>(null)
@@ -76,10 +77,35 @@ const CartContextProvider = ({ children }: CartContextProps) => {
         }
     }
 
+    const removeFromCart = (productId: number): void => {
+        // Ta bort alla av den productId
+        setCartItems((prev) => {
+            const newCartItems = { ...prev }
+            if (newCartItems[productId] > 0) {
+                newCartItems[productId] = 0
+            }
+            return newCartItems
+        })
+        // Om användaren är inloggad, ta bort produkten från databasen. Tas bort från tabellen cartItems
+        if (localStorage.getItem('token')) {
+            fetch('/removefromcart', {
+                method: 'POST',
+                headers: {
+                    token: `${localStorage.getItem('token')}`,
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ productId: productId })
+            })
+                .then((res) => res.json())
+                .then((data) => console.log(data))
+        }
+    }
+
     const contextValue: CartContextType = {
         cartItems,
         setCartItems,
-        addToCart
+        addToCart,
+        removeFromCart
     }
 
     return (
