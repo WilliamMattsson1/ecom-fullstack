@@ -79,12 +79,20 @@ app.post('/login', async (req, res) => {
 })
 
 app.post('/cart/add', async (req, res) => {
-    const { userId, productId } = req.body
+    const { productId } = req.body
+
+    const token = req.headers.token as string
+    const decoded = jwt.verify(token, 'william-password321') as {
+        userId: number
+    }
+    const userId = decoded.userId
 
     if (!userId || !productId) {
-        return res
-            .status(400)
-            .json({ message: 'User ID and Product ID are required' })
+        return res.status(400).json({
+            message: 'User ID and Product ID are required',
+            userId,
+            productId
+        })
     }
 
     try {
@@ -95,6 +103,38 @@ app.post('/cart/add', async (req, res) => {
         res.status(201).json({ message: 'Product added to cart' })
     } catch (error) {
         res.status(500).json({ message: 'Error adding product to cart', error })
+    }
+})
+
+app.post('/removefromcart', async (req, res) => {
+    const { productId } = req.body
+
+    const token = req.headers.token as string
+    const decoded = jwt.verify(token, 'william-password321') as {
+        userId: number
+    }
+    const userId = decoded.userId
+
+    if (!userId || !productId) {
+        return res.status(400).json({
+            message: 'User ID and Product ID are required',
+            userId,
+            productId
+        })
+    }
+
+    try {
+        // Tar bort alla produkter med product_id och user_id.
+        await database.run(
+            `DELETE FROM cartItems WHERE user_id = ? AND product_id = ?`,
+            [userId, productId]
+        )
+        res.status(200).json({
+            message: 'Product removed from cart',
+            productId: productId
+        })
+    } catch (error) {
+        res.status(500).json({ message: 'Error removing product from cart' })
     }
 })
 
