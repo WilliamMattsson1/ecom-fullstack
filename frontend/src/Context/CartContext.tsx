@@ -1,10 +1,13 @@
-import React, { createContext, useState, useEffect } from 'react'
+import React, { createContext, useEffect, useState } from 'react'
+import useProducts from './useProducts'
 
 interface CartContextType {
     cartItems: Record<number, number>
     setCartItems: React.Dispatch<React.SetStateAction<Record<number, number>>>
     addToCart: (productId: number) => void
     removeFromCart: (productId: number) => void
+    getTotalCartAmount: () => number
+    getTotalCartItems: () => number
 }
 
 export const CartContext = createContext<CartContextType | null>(null)
@@ -23,11 +26,12 @@ type CartContextProps = {
 }
 
 const CartContextProvider = ({ children }: CartContextProps) => {
+    const { allProducts } = useProducts()
     const [cartItems, setCartItems] = useState<Record<number, number>>(
         getDefaultCart()
     )
 
-    // Om det finns token, alltså inloggning, hämta cartItems från databasen för den inloggade användaren.
+    // Om det finns token, alltså inloggning, hämta cartItems från databasen för den inloggade användaren
     useEffect(() => {
         if (localStorage.getItem('token')) {
             fetch('/getcart', {
@@ -101,11 +105,34 @@ const CartContextProvider = ({ children }: CartContextProps) => {
         }
     }
 
+    const getTotalCartAmount = (): number => {
+        let totalAmount = 0
+        for (const item in cartItems) {
+            if (cartItems[item] > 0) {
+                const itemInfo = allProducts.find(
+                    (product) => product.id === Number(item)
+                )
+                totalAmount += itemInfo!.price * cartItems[item]
+            }
+        }
+        return totalAmount
+    }
+
+    const getTotalCartItems = (): number => {
+        let totalItems = 0
+        for (const item in cartItems) {
+            totalItems += cartItems[item]
+        }
+        return totalItems
+    }
+
     const contextValue: CartContextType = {
         cartItems,
         setCartItems,
         addToCart,
-        removeFromCart
+        removeFromCart,
+        getTotalCartAmount,
+        getTotalCartItems
     }
 
     return (
