@@ -95,6 +95,7 @@
 .cart-remove-icon {
     cursor: pointer;
     font-size: 28px;
+    z-index: 3;
 }
 
 @media (max-width: 1000px) {
