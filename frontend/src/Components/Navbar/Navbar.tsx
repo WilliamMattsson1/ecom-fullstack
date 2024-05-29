@@ -1,13 +1,11 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useContext } from 'react'
 import { Link, NavLink } from 'react-router-dom'
 import './Navbar.css'
-
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCartShopping } from '@fortawesome/free-solid-svg-icons'
-
 import logo from '../../assets/logo.png'
-
 import useScroll from '../../Context/useScroll'
+import { CartContext } from '../../Context/CartContext'
 
 interface LinkItem {
     url: string
@@ -15,6 +13,14 @@ interface LinkItem {
 }
 
 const Navbar = () => {
+    const { getTotalCartItems } = useContext(CartContext) || {
+        getTotalCartItems: () => 0
+    }
+
+    const { setCartItems } = useContext(CartContext) || {
+        setCartItems: () => {}
+    }
+
     const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false)
     const [isLoggedIn, setIsLoggedIn] = useState<boolean>(
         localStorage.getItem('token') ? true : false
@@ -36,6 +42,7 @@ const Navbar = () => {
     const handleLogout = () => {
         localStorage.removeItem('token')
         setIsLoggedIn(false)
+        setCartItems({})
     }
 
     const { scrollToTop } = useScroll()
@@ -89,7 +96,7 @@ const Navbar = () => {
                             className="cart-icon"
                             icon={faCartShopping}
                         />
-                        <div className="cart-count">0</div>
+                        <div className="cart-count">{getTotalCartItems()}</div>
                     </Link>
                 </div>
                 <div
