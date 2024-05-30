@@ -1,0 +1,96 @@
+.admin-products-title {
+    font-size: 1.8rem;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.admin-products-titles {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    padding: 1rem 0;
+    background-color: #eaeaea;
+    align-items: center;
+    text-align: center;
+    border-radius: 6px;
+    font-weight: bold;
+}
+
+.admin-product {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 0px;
+    align-items: center;
+    text-align: center;
+    padding: 1rem 0;
+    border-bottom: 1px solid #ccc;
+}
+
+.admin-product-id {
+    font-weight: bold;
+}
+
+.admin-product-image {
+    width: 70px;
+    height: 90px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.admin-product-name,
+.admin-product-image,
+.admin-product-gender,
+.admin-product-category,
+.admin-product-price,
+.admin-product-edit,
+.admin-product-delete {
+    text-align: center;
+    font-size: 18px;
+}
+
+.admin-products-icons {
+    display: flex;
+    justify-content: center;
+    gap: 6px;
+}
+
+.admin-product-edit {
+    cursor: pointer;
+    color: #333;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.admin-product-edit:hover {
+    color: #555;
+}
+
+.admin-product-delete {
+    cursor: pointer;
+    color: red;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.admin-product-delete:hover {
+    color: darkred;
+}
+
+@media (max-width: 800px) {
+    .admin-view-content {
+        width: 90%;
+    }
+
+    .admin-products-titles {
+        display: none;
+    }
+
+    .admin-product {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        gap: 10px;
+        align-items: center;
+        text-align: center;
+        padding: 1rem 0;
+        border-bottom: 1px solid #ccc;
+    }
+}
