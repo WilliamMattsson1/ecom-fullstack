@@ -193,6 +193,54 @@ app.get('/checkadmin', async (req, res) => {
     }
 })
 
+app.post('/addproduct', async (req, res) => {
+    const {
+        productName,
+        productPrice,
+        productCategory,
+        productGender,
+        productImage
+    } = req.body
+    if (
+        !productName ||
+        !productPrice ||
+        !productCategory ||
+        !productGender ||
+        !productImage
+    ) {
+        return res.status(400).json({ message: 'All fields are required' })
+    }
+
+    const query = `INSERT INTO products (name, price, category, gender, image) VALUES (?, ?, ?, ?, ?)`
+    try {
+        await database.run(query, [
+            productName,
+            productPrice,
+            productCategory,
+            productGender,
+            productImage
+        ])
+        res.status(201).json({ message: 'Product added' })
+    } catch {
+        res.status(500).json({ message: 'Error adding product' })
+    }
+})
+
+app.post('/deleteproduct', async (req, res) => {
+    const { productId } = req.body
+    if (!productId) {
+        return res.status(400).json({ message: 'Product ID is required' })
+    }
+
+    const query = `DELETE FROM products WHERE id = ?`
+    try {
+        await database.run(query, [productId])
+        res.status(200).json({ message: 'Product deleted' })
+    } catch {
+        res.status(500).json({ message: 'Error deleting product' })
+    }
+})
+
 const port = process.env.PORT || 3000
 app.listen(port, () => {
     console.log(`Server is listening on port ${port}`)
