@@ -22,6 +22,7 @@ const AdminEditProducts = () => {
         setProducts(allProducts)
     }, [allProducts])
 
+    const { fetchAllProducts } = useProducts()
     const deleteProduct = async (productId: number) => {
         try {
             const response = await fetch('/deleteproduct', {
@@ -37,6 +38,7 @@ const AdminEditProducts = () => {
                 products.filter((product: Product) => product.id !== productId)
             )
 
+            fetchAllProducts()
             console.log(data)
         } catch (error) {
             console.error('Error deleting product:', error)

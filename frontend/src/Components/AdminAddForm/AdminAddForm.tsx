@@ -42,25 +42,29 @@ const AdminAddForm = () => {
 
         console.log('Formdata: Number:', formDataWithNumberPrice)
 
-        const response = await fetch('/addproduct', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(formData)
-        })
-        const data = await response.json()
-        console.log(data)
+        try {
+            const response = await fetch('/addproduct', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(formData)
+            })
+            const data = await response.json()
+            console.log(data)
 
-        fetchAllProducts()
+            fetchAllProducts()
 
-        setFormData({
-            productName: '',
-            productPrice: '',
-            productCategory: 'tops',
-            productGender: 'men',
-            productImage: ''
-        })
+            setFormData({
+                productName: '',
+                productPrice: '',
+                productCategory: 'tops',
+                productGender: 'men',
+                productImage: ''
+            })
+        } catch (error) {
+            console.error('Error adding product:', error)
+        }
     }
     return (
         <div className="add-product-form">
