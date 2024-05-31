@@ -30,6 +30,7 @@
 @media (max-width: 500px) {
     .breadcrumbs {
         border-radius: 0;
+        width: 100%;
     }
     .each-breadcrumb {
         font-size: 0.8rem;

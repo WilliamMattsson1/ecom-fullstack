@@ -25,11 +25,7 @@
 .popup-icon {
     font-size: 2rem;
     color: #036103;
-    opacity: 0.4;
-}
-
-.popup-cart-text p {
-    color: #333;
+    color: white;
 }
 
 .x-icon {
@@ -37,7 +33,6 @@
     top: 13px;
     right: 13px;
     cursor: pointer;
-    color: #333;
 }
 
 @media (max-width: 600px) {

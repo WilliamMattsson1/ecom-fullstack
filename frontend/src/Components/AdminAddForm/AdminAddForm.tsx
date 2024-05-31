@@ -87,7 +87,7 @@ const AdminAddForm = () => {
 
                     <div className="admin-input-container">
                         <label>
-                            Product Price
+                            Price
                             <input
                                 value={formData.productPrice}
                                 placeholder="1000"
@@ -102,7 +102,7 @@ const AdminAddForm = () => {
                     <div className="admin-select-container">
                         <div className="admin-select">
                             <label>
-                                Product Category
+                                Category
                                 <select
                                     value={formData.productCategory}
                                     onChange={handleInputChange}
@@ -116,7 +116,7 @@ const AdminAddForm = () => {
                         </div>
                         <div className="admin-select">
                             <label>
-                                Product Gender
+                                Gender
                                 <select
                                     value={formData.productGender}
                                     onChange={handleInputChange}

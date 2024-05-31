@@ -190,3 +190,9 @@ img {
         border-radius: 0px;
     }
 }
+
+@media (max-width: 500px) {
+    .logo {
+        width: 100px;
+    }
+}

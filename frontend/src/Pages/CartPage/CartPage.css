@@ -59,9 +59,11 @@
     }
 
     .cart-checkout-btn-container {
-        width: 100%;
+        width: 92%;
         margin: auto;
         margin-top: 1rem;
+        border-radius: 8px;
+        overflow: hidden;
     }
 
     .cart-checkout-btn {
