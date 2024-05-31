@@ -5,6 +5,7 @@ import { Database } from 'sqlite'
 import sqlite3 from 'sqlite3'
 import path from 'path'
 import jwt from 'jsonwebtoken'
+import bcrypt from 'bcrypt'
 
 let database: Database
 ;(async () => {
@@ -51,16 +52,19 @@ app.post('/signup', async (req, res) => {
         return res.status(400).json({ message: 'All fields are required' })
     }
 
+    const hashedPassword = await bcrypt.hash(password, 10)
+
     const query = `INSERT INTO users (name, email, password) VALUES (?, ?, ?)`
     try {
-        await database.run(query, [name, email, password])
+        await database.run(query, [name, email, hashedPassword])
         res.status(201).json({ message: 'User created' })
     } catch {
         res.status(500).json({ message: 'User already exists' })
     }
 })
 
-app.post('/login', async (req, res) => {
+/* Login utan bcrypt */
+/* app.post('/login', async (req, res) => {
     const { email, password } = req.body
     if (!email || !password) {
         return res.status(400).json({ message: 'All fields are required' })
@@ -75,6 +79,32 @@ app.post('/login', async (req, res) => {
         return res
             .status(200)
             .json({ message: 'Login successful (from backend)', token: token })
+    }
+}) */
+
+/* Login med bcrypt */
+app.post('/login', async (req, res) => {
+    const { email, password } = req.body
+    if (!email || !password) {
+        return res.status(400).json({ message: 'All fields are required' })
+    }
+
+    const query = `SELECT * FROM users WHERE email = ?`
+    const user = await database.get(query, [email])
+    if (!user) {
+        return res.status(401).json({ message: 'Invalid email' })
+    }
+
+    const passwordCorrect = await bcrypt.compare(password, user.password)
+    if (!passwordCorrect) {
+        return res.status(401).json({ message: 'Invalid password' })
+    } else {
+        const token = jwt.sign({ userId: user.id }, 'william-password321')
+        return res.status(200).json({
+            message: 'Login successful (from backend)',
+            token: token,
+            user: user
+        })
     }
 })
 
