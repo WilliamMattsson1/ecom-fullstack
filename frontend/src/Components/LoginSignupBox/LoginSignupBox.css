@@ -60,6 +60,14 @@
     outline: none;
 }
 
+.login-error-message {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 1rem;
+    color: red;
+}
+
 .login-signup-change {
     margin: 1.6rem auto;
     display: flex;

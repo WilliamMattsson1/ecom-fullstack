@@ -1,7 +1,12 @@
 import './LoginSignupBox.css'
 import { useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faUser, faEnvelope, faLock } from '@fortawesome/free-solid-svg-icons'
+import {
+    faUser,
+    faEnvelope,
+    faLock,
+    faCircleExclamation
+} from '@fortawesome/free-solid-svg-icons'
 
 const LoginSignupBox = () => {
     const [loginSignupText, setLoginSignupText] = useState<string>('Login')
@@ -10,6 +15,7 @@ const LoginSignupBox = () => {
         email: '',
         password: ''
     })
+    const [loginError, setLoginError] = useState<string>('')
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setFormData({
@@ -37,6 +43,9 @@ const LoginSignupBox = () => {
                 body: JSON.stringify(formData)
             })
             const data = await response.json()
+            if (response.status === 401) {
+                setLoginError(data.message)
+            }
             console.log(data)
 
             if (response.ok) {
@@ -58,6 +67,9 @@ const LoginSignupBox = () => {
                 body: JSON.stringify(formData)
             })
             const data = await response.json()
+            if (response.status !== 201 && response.status !== 200) {
+                setLoginError(data.message)
+            }
             console.log(data)
 
             if (response.ok) {
@@ -85,6 +97,7 @@ const LoginSignupBox = () => {
                                 icon={faUser}
                             />
                             <input
+                                required
                                 onChange={handleInputChange}
                                 name="name"
                                 type="text"
@@ -102,6 +115,7 @@ const LoginSignupBox = () => {
                             icon={faEnvelope}
                         />
                         <input
+                            required
                             onChange={handleInputChange}
                             name="email"
                             type="email"
@@ -115,6 +129,7 @@ const LoginSignupBox = () => {
                             icon={faLock}
                         />
                         <input
+                            required
                             onChange={handleInputChange}
                             name="password"
                             type="password"
@@ -123,6 +138,13 @@ const LoginSignupBox = () => {
                         />
                     </div>
                 </div>
+                {loginError && (
+                    <div className="login-error-message">
+                        <FontAwesomeIcon icon={faCircleExclamation} />
+                        <p>{loginError}</p>
+                    </div>
+                )}
+
                 <div className="login-signup-change">
                     {loginSignupText === 'Sign up' ? (
                         <p>
