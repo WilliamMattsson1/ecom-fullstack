@@ -50,6 +50,7 @@ const Navbar = () => {
             })
             const data = await response.json()
             setIsAdmin(data.isAdmin)
+            console.log('Här kördes checkAdminStatus', data.isAdmin)
         } catch (error) {
             console.error('Error checking admin status:', error)
         }
