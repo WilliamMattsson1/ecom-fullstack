@@ -38,7 +38,9 @@ app.post('/subscribe', async (req, res) => {
     const query = `INSERT INTO newsletterSubs (email) VALUES (?)`
     try {
         await database.run(query, [email])
-        res.status(201).json({ message: 'Email added to the newsletter list' })
+        res.status(201).json({
+            message: 'Email added to the newsletter list'
+        })
     } catch {
         res.status(500).json({
             message: 'Email already exists in the newsletter list'
@@ -132,7 +134,10 @@ app.post('/cart/add', async (req, res) => {
         )
         res.status(201).json({ message: 'Product added to cart' })
     } catch (error) {
-        res.status(500).json({ message: 'Error adding product to cart', error })
+        res.status(500).json({
+            message: 'Error adding product to cart',
+            error
+        })
     }
 })
 
@@ -164,7 +169,9 @@ app.post('/cart/remove', async (req, res) => {
             productId: productId
         })
     } catch (error) {
-        res.status(500).json({ message: 'Error removing product from cart' })
+        res.status(500).json({
+            message: 'Error removing product from cart'
+        })
     }
 })
 

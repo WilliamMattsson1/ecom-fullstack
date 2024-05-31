@@ -37,9 +37,8 @@ type CartContextProps = {
 
 const CartContextProvider = ({ children }: CartContextProps) => {
     const { allProducts } = useProducts()
-    const [cartItems, setCartItems] = useState<Record<number, number>>(
-        getDefaultCart()
-    )
+    const [cartItems, setCartItems] =
+        useState<Record<number, number>>(getDefaultCart())
 
     // Om det finns token, alltså inloggning, hämta cartItems från databasen för den inloggade användaren
     useEffect(() => {
