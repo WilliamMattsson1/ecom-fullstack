@@ -4,7 +4,10 @@ import { CartContext } from '../../Context/CartContext'
 
 const CartPriceDetails = () => {
     const { getTotalCartAmount } = useContext(CartContext)
-    const shipping: number = 2.99
+    const shippingStandard: number = 2.99
+    const totalCartAmount = getTotalCartAmount()
+    const shipping = totalCartAmount > 100 ? 0 : shippingStandard
+    const totalWithShipping = totalCartAmount + shipping
 
     return (
         <div className="cart-price-box">
@@ -12,17 +15,28 @@ const CartPriceDetails = () => {
             <div className="cart-price-detail">
                 <p className="cart-price-detail-left">Subtotal</p>
                 <p className="cart-price-detail-right">
-                    {getTotalCartAmount().toFixed(2)}
+                    {totalCartAmount.toFixed(2)}
                 </p>
             </div>
             <div className="cart-price-detail">
                 <p className="cart-price-detail-left">Shipping</p>
-                <p className="cart-price-detail-right">${shipping}</p>
+                <p className="cart-price-detail-right">
+                    {shipping === 0 ? (
+                        <span>
+                            <span className="old-shipping">
+                                ${shippingStandard.toFixed(2)}
+                            </span>
+                            <span>Free</span>
+                        </span>
+                    ) : (
+                        `$${shipping.toFixed(2)}`
+                    )}
+                </p>
             </div>
             <div className="cart-price-detail total-sum">
                 <p className="cart-price-detail-left">Total</p>
                 <p className="cart-price-detail-right">
-                    ${(getTotalCartAmount() + shipping).toFixed(2)}
+                    ${totalWithShipping.toFixed(2)}
                 </p>
             </div>
         </div>

@@ -12,7 +12,7 @@ const HeroSection = () => {
                 <div className="hero-text-section">
                     <div className="hero-text-container">
                         <h1>Discover Your Style</h1>
-                        <p>Check Or Latest Fashion</p>
+                        <p>Check Our Latest Fashion</p>
                         <Link onClick={scrollToTop} to={'/products'}>
                             <button>Shop Now</button>
                         </Link>
