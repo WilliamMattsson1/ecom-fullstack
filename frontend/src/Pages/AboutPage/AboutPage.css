@@ -1,0 +1,136 @@
+.about-us-container {
+    max-width: 800px;
+    margin: 0 auto;
+    margin-top: 18vh;
+    padding: 20px;
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.about-us-heading {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.about-us-content {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    text-align: center;
+}
+
+.about-us-content p {
+    margin-bottom: 20px;
+}
+
+.about-boxes-container {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 40px;
+}
+
+.about-box {
+    background-color: #eaeaea;
+    padding: 1rem;
+    width: 30%;
+    border-radius: 6px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.about-second-container {
+    display: flex;
+    width: 60%;
+    height: 500px;
+    margin: 0 auto;
+    margin-top: 3rem;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.about-img-container {
+    width: 50%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.about-second-right {
+    width: 50%;
+    padding: 1.8rem;
+    background-color: white;
+}
+
+.about-second-right h2 {
+    font-size: 1.8rem;
+    text-align: center;
+}
+
+.about-second-right p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-top: 2rem;
+}
+
+@media (max-width: 1100px) {
+    .about-boxes-container {
+        flex-wrap: wrap;
+    }
+
+    .about-box {
+        width: 45%;
+        margin-bottom: 1.2rem;
+    }
+
+    .about-second-container {
+        width: 80%;
+    }
+
+    .about-second-container p {
+        margin-top: 1rem;
+    }
+}
+
+@media (max-width: 800px) {
+    .about-us-container {
+        border-radius: 0px;
+    }
+    .about-second-container {
+        height: auto;
+        flex-direction: column-reverse;
+        width: 100%;
+        border-radius: 0px;
+    }
+
+    .about-img-container {
+        width: 100%;
+        height: 600px;
+    }
+
+    .about-second-right {
+        width: 100%;
+    }
+}
+
+@media (max-width: 500px) {
+    .about-boxes-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .about-box {
+        width: 60%;
+        margin-bottom: 20px;
+    }
+
+    .about-img-container {
+        height: 360px;
+    }
+
+    .about-second-right {
+        width: 100%;
+    }
+}
