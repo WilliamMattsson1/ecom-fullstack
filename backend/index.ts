@@ -65,25 +65,6 @@ app.post('/signup', async (req, res) => {
     }
 })
 
-/* Login utan bcrypt */
-/* app.post('/login', async (req, res) => {
-    const { email, password } = req.body
-    if (!email || !password) {
-        return res.status(400).json({ message: 'All fields are required' })
-    }
-
-    const query = `SELECT * FROM users WHERE email = ? AND password = ?`
-    const user = await database.get(query, [email, password])
-    if (!user) {
-        return res.status(401).json({ message: 'Invalid username or password' })
-    } else {
-        const token = jwt.sign({ userId: user.id }, 'william-password321')
-        return res
-            .status(200)
-            .json({ message: 'Login successful (from backend)', token: token })
-    }
-}) */
-
 /* Login med bcrypt */
 app.post('/login', async (req, res) => {
     const { email, password } = req.body
