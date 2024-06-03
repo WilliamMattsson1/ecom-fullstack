@@ -12,9 +12,22 @@
     padding: 1.4rem;
     text-align: center;
     border-bottom: 2px solid rgba(128, 128, 128, 0.24);
+    overflow: hidden;
 }
 
 .offer-banner p {
     font-weight: 500;
     font-style: italic;
+    transition: opacity 0.5s ease-in-out;
+    opacity: 0;
+    width: 100%;
+    text-align: center;
+}
+
+.offer-message.fade-in {
+    opacity: 1;
+}
+
+.offer-message.fade-out {
+    opacity: 0;
 }
