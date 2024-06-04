@@ -26,7 +26,7 @@ const CartPriceDetails = () => {
                             <span className="old-shipping">
                                 ${shippingStandard.toFixed(2)}
                             </span>
-                            <span>Free</span>
+                            <span style={{ color: 'red' }}>Free</span>
                         </span>
                     ) : (
                         `$${shipping.toFixed(2)}`
