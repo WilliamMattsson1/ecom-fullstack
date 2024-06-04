@@ -8,6 +8,9 @@ interface CartContextType {
     removeFromCart: (productId: number) => void
     getTotalCartAmount: () => number
     getTotalCartItems: () => number
+    discount: number
+    applyDiscount: (promoCode: string) => void
+    isDiscountApplied?: boolean
 }
 
 /* Adding default values to not handle in components */
@@ -17,7 +20,10 @@ const defaultCartContext: CartContextType = {
     addToCart: () => {},
     removeFromCart: () => {},
     getTotalCartAmount: () => 0,
-    getTotalCartItems: () => 0
+    getTotalCartItems: () => 0,
+    discount: 0,
+    applyDiscount: () => {},
+    isDiscountApplied: false
 }
 
 export const CartContext = createContext<CartContextType>(defaultCartContext)
@@ -151,13 +157,30 @@ const CartContextProvider = ({ children }: CartContextProps) => {
         return totalItems
     }
 
+    const [discount, setDiscount] = useState<number>(0)
+    const [isDiscountApplied, setIsDiscountApplied] = useState<boolean>(false)
+
+    const applyDiscount = (promoCode: string) => {
+        if (promoCode === 'iths2024') {
+            setDiscount(0.1)
+            setIsDiscountApplied(true)
+            console.log('Discount applied', promoCode, discount)
+        } else {
+            setDiscount(0)
+            console.log('Discount not applied', promoCode, discount)
+        }
+    }
+
     const contextValue: CartContextType = {
         cartItems,
         setCartItems,
         addToCart,
         removeFromCart,
         getTotalCartAmount,
-        getTotalCartItems
+        getTotalCartItems,
+        discount,
+        applyDiscount,
+        isDiscountApplied
     }
 
     return (

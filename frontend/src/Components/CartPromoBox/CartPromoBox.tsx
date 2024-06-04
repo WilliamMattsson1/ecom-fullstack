@@ -1,11 +1,13 @@
-import { useState } from 'react'
+import { useState, useContext } from 'react'
 import './CartPromoBox.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowDown } from '@fortawesome/free-solid-svg-icons'
+import { CartContext } from '../../Context/CartContext'
 
 const CartPromoBox = () => {
     const [isOpen, setIsOpen] = useState<boolean>(false)
     const [discountCode, setDiscountCode] = useState<string>('')
+    const { applyDiscount, isDiscountApplied } = useContext(CartContext)
 
     const toggleAccordion = () => {
         setIsOpen(!isOpen)
@@ -16,7 +18,8 @@ const CartPromoBox = () => {
     }
 
     const handleApplyCode = () => {
-        console.log(discountCode)
+        applyDiscount(discountCode)
+        console.log('Discount input:', discountCode)
         setDiscountCode('')
     }
 
@@ -36,7 +39,12 @@ const CartPromoBox = () => {
                         onChange={handleInputChange}
                         placeholder="Enter promo code"
                     />
-                    <button onClick={handleApplyCode}>Apply</button>
+                    <button
+                        onClick={handleApplyCode}
+                        disabled={isDiscountApplied}
+                    >
+                        {isDiscountApplied ? 'Code Applied' : 'Apply'}
+                    </button>
                 </div>
             )}
         </div>

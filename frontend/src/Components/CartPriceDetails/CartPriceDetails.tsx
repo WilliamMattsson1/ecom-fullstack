@@ -3,11 +3,13 @@ import { useContext } from 'react'
 import { CartContext } from '../../Context/CartContext'
 
 const CartPriceDetails = () => {
-    const { getTotalCartAmount } = useContext(CartContext)
+    const { getTotalCartAmount, discount } = useContext(CartContext)
     const shippingStandard: number = 2.99
     const totalCartAmount = getTotalCartAmount()
-    const shipping = totalCartAmount > 100 ? 0 : shippingStandard
-    const totalWithShipping = totalCartAmount + shipping
+    const discountAmount = totalCartAmount * (1 - discount)
+    const totalDiscount = totalCartAmount - discountAmount
+    const shipping = discountAmount > 100 ? 0 : shippingStandard
+    const totalWithShipping = discountAmount + shipping
 
     return (
         <div className="cart-price-box">
@@ -33,6 +35,18 @@ const CartPriceDetails = () => {
                     )}
                 </p>
             </div>
+            {discount > 0 && (
+                <div className="cart-price-detail">
+                    <p className="cart-price-detail-left">Discount</p>
+                    <p
+                        className="cart-price-detail-right"
+                        style={{ color: 'red', textDecoration: 'line-through' }}
+                    >
+                        -${totalDiscount.toFixed(2)}
+                    </p>
+                </div>
+            )}
+
             <div className="cart-price-detail total-sum">
                 <p className="cart-price-detail-left">Total</p>
                 <p className="cart-price-detail-right">
