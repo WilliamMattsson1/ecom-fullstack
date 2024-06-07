@@ -12,7 +12,9 @@ const CheckoutProducts = () => {
         <div className="checkout">
             <h2 className="checkout-title">Order Details</h2>
             <div className="checkout-items">
-                <h3>Your {getTotalCartItems()} items</h3>
+                <h3 className="checkout-h3">
+                    Your {getTotalCartItems()} items
+                </h3>
                 <div className="checkout-items-titles">
                     <p>Products</p>
                     <p>Quantity</p>
@@ -39,7 +41,7 @@ const CheckoutProducts = () => {
                                                 src={product.image}
                                                 alt={product.name}
                                             />
-                                            <div className="checkout-item-info-p-c">
+                                            <div className="checkout-item-info-details">
                                                 <p className="checkout-item-info-name">
                                                     {product.name}
                                                 </p>
