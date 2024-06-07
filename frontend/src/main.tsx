@@ -15,6 +15,7 @@ import ContactPage from './Pages/ContactPage/ContactPage.tsx'
 import GenderProducts from './Pages/GenderProducts/GenderProducts.tsx'
 import CartContextProvider from './Context/CartContext.tsx'
 import AdminPage from './Pages/AdminPage/AdminPage.tsx'
+import CheckoutPage from './Pages/CheckoutPage/CheckoutPage.tsx'
 
 const router = createBrowserRouter([
     {
@@ -50,6 +51,10 @@ const router = createBrowserRouter([
     {
         path: '/cart',
         element: <CartPage />
+    },
+    {
+        path: '/checkout',
+        element: <CheckoutPage />
     },
     {
         path: '/contact',

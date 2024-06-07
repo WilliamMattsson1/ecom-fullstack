@@ -9,6 +9,7 @@ import EmptyCart from '../../Components/EmptyCart/EmptyCart'
 import InfoBox from '../../Components/InfoBox/InfoBox'
 import './CartPage.css'
 import { CartContext } from '../../Context/CartContext'
+import { Link } from 'react-router-dom'
 
 const CartPage = () => {
     const { getTotalCartItems } = useContext(CartContext)
@@ -28,9 +29,11 @@ const CartPage = () => {
                             <div>
                                 <CartPromoBox />
                                 <div className="cart-checkout-btn-container">
-                                    <button className="cart-checkout-btn">
-                                        Checkout
-                                    </button>
+                                    <Link to="/checkout">
+                                        <button className="cart-checkout-btn">
+                                            Checkout
+                                        </button>
+                                    </Link>
                                 </div>
                             </div>
                         </div>
