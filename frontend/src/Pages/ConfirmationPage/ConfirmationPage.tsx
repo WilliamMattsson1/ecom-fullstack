@@ -3,6 +3,7 @@ import { Link, useParams } from 'react-router-dom'
 import './ConfirmationPage.css'
 import Navbar from '../../Components/Navbar/Navbar'
 import Footer from '../../Components/Footer/Footer'
+import useScroll from '../../Context/useScroll'
 
 interface Order {
     id: number
@@ -19,6 +20,8 @@ interface OrderItem {
 }
 
 const ConfirmationPage = () => {
+    const { scrollToTop } = useScroll()
+
     const { orderId } = useParams<{ orderId: string }>()
     const [orderData, setOrderData] = useState<{
         order: Order
@@ -87,7 +90,7 @@ const ConfirmationPage = () => {
                 </div>
 
                 <div className="btn-container">
-                    <Link to={'/'}>
+                    <Link to={'/'} onClick={scrollToTop}>
                         <button className="btn">Continue Shopping</button>
                     </Link>
                 </div>

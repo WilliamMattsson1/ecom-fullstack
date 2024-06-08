@@ -2,8 +2,11 @@ import './CheckoutForm.css'
 import { useContext, useState, ChangeEvent, FormEvent } from 'react'
 import { CartContext } from '../../Context/CartContext'
 import { useNavigate } from 'react-router-dom'
+import useScroll from '../../Context/useScroll'
 
 const CheckoutForm = () => {
+    const { scrollToTop } = useScroll()
+
     const navigate = useNavigate()
 
     const { cartItems, getTotalCartAmount, discount, clearCart } =
@@ -184,7 +187,11 @@ const CheckoutForm = () => {
                             </div>
                         </div>
                     </div>
-                    <button type="submit" className="checkout-btn">
+                    <button
+                        type="submit"
+                        className="checkout-btn"
+                        onClick={scrollToTop}
+                    >
                         Place Order
                     </button>
                 </form>

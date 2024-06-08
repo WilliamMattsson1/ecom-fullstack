@@ -10,9 +10,11 @@ import InfoBox from '../../Components/InfoBox/InfoBox'
 import './CartPage.css'
 import { CartContext } from '../../Context/CartContext'
 import { Link } from 'react-router-dom'
+import useScroll from '../../Context/useScroll'
 
 const CartPage = () => {
     const { getTotalCartItems } = useContext(CartContext)
+    const { scrollToTop } = useScroll()
 
     return (
         <>
@@ -29,7 +31,7 @@ const CartPage = () => {
                             <div>
                                 <CartPromoBox />
                                 <div className="cart-checkout-btn-container">
-                                    <Link to="/checkout">
+                                    <Link to="/checkout" onClick={scrollToTop}>
                                         <button className="cart-checkout-btn">
                                             Checkout
                                         </button>
