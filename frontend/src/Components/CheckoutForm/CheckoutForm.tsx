@@ -1,9 +1,14 @@
 import './CheckoutForm.css'
 import { useContext, useState, ChangeEvent, FormEvent } from 'react'
 import { CartContext } from '../../Context/CartContext'
+import { useNavigate } from 'react-router-dom'
 
 const CheckoutForm = () => {
-    const { cartItems } = useContext(CartContext)
+    const navigate = useNavigate()
+
+    const { cartItems, getTotalCartAmount, discount, clearCart } =
+        useContext(CartContext)
+    const totalAmount = getTotalCartAmount() * (1 - discount)
     const [userData, setUserData] = useState({
         name: '',
         email: '',
@@ -24,9 +29,38 @@ const CheckoutForm = () => {
         }))
     }
 
-    const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+    const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault()
-        console.log('Order submitted:', userData, cartItems)
+        console.log(
+            'Order submitted, userData, cartItems: ',
+            userData,
+            cartItems
+        )
+        try {
+            const response = await fetch('/createorder', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    token: `${localStorage.getItem('token')}`
+                },
+                body: JSON.stringify({ cartItems, totalAmount, discount })
+            })
+
+            const data = await response.json()
+            if (response.ok) {
+                console.log('Order created:', data)
+                clearCart()
+                navigate('/confirmation/' + data.orderId)
+            } else if (response.status === 401) {
+                alert(data.message) // Ej inloggad
+                console.log('Must login to place order')
+            } else {
+                console.error('Error creating order: ', data)
+                alert(data.message)
+            }
+        } catch (error) {
+            console.error('Error creating order:', error)
+        }
     }
 
     return (

@@ -16,6 +16,7 @@ import GenderProducts from './Pages/GenderProducts/GenderProducts.tsx'
 import CartContextProvider from './Context/CartContext.tsx'
 import AdminPage from './Pages/AdminPage/AdminPage.tsx'
 import CheckoutPage from './Pages/CheckoutPage/CheckoutPage.tsx'
+import ConfirmationPage from './Pages/ConfirmationPage/ConfirmationPage.tsx'
 
 const router = createBrowserRouter([
     {
@@ -55,6 +56,10 @@ const router = createBrowserRouter([
     {
         path: '/checkout',
         element: <CheckoutPage />
+    },
+    {
+        path: '/confirmation/:orderId',
+        element: <ConfirmationPage />
     },
     {
         path: '/contact',

@@ -259,6 +259,114 @@ app.post('/deleteproduct', async (req, res) => {
     }
 })
 
+interface CartItem {
+    product_id: number
+}
+
+app.post('/createorder', async (req, res) => {
+    const { cartItems, totalAmount, discount } = req.body
+    const token = req.headers.token as string
+    console.log('Token:', token)
+
+    try {
+        if (token === 'null') {
+            return res
+                .status(401)
+                .json({ message: 'User must sign in to place orders' })
+        }
+        const decoded = jwt.verify(token, 'william-password321') as {
+            userId: number
+        }
+        const userId = decoded.userId
+
+        const userCartItems: CartItem[] = []
+        for (const productId in cartItems) {
+            const product_id = parseInt(productId)
+            userCartItems.push({ product_id })
+        }
+        console.log('User cart items:', userCartItems)
+
+        if (userCartItems.length === 0 || !totalAmount) {
+            return res.status(400).json({
+                message: 'Cart items and total amount are required (empty cart)'
+            })
+        }
+
+        const result = await database.run(
+            `INSERT INTO orders (user_id, total_amount, discount) VALUES (?, ?, ?)`,
+            [userId, totalAmount, discount]
+        )
+        const orderId = result.lastID
+
+        const orderItemsPromises = userCartItems.map(async (item) => {
+            const product = await database.get(
+                `SELECT price FROM products WHERE id = ?`,
+                [item.product_id]
+            )
+            const price = product ? product.price : 0
+            return database.run(
+                `INSERT INTO order_items (order_id, product_id, quantity, price) VALUES (?, ?, ?, ?)`,
+                [orderId, item.product_id, cartItems[item.product_id], price]
+            )
+        })
+
+        await Promise.all(orderItemsPromises)
+
+        res.json({ message: 'Order created', orderId })
+    } catch (error) {
+        console.error('Error creating order:', error)
+        return res.status(401).json({
+            message: 'Catched: Invalid token or other error',
+            error: error
+        })
+    }
+})
+
+app.get('/orderdata/:orderId', async (req, res) => {
+    try {
+        const orderId = req.params.orderId
+
+        const orderQuery = `SELECT * FROM orders WHERE id = ?`
+        const order = await database.get(orderQuery, [orderId])
+
+        if (!order) {
+            return res.status(404).json({ message: 'Order not found' })
+        }
+
+        const orderItemsQuery = `SELECT * FROM order_items WHERE order_id = ?`
+        const orderItems = await database.all(orderItemsQuery, [orderId])
+
+        res.json({ order, orderItems })
+    } catch (error) {
+        console.error('Error fetching order data:', error)
+        return res.status(500).json({ message: 'Server error' })
+    }
+})
+
+app.post('/clearcart', async (req, res) => {
+    const token = req.headers.token as string
+    try {
+        if (!token || token === 'null') {
+            return res
+                .status(401)
+                .json({ message: 'User must sign in to clear cart' })
+        }
+
+        const decoded = jwt.verify(token, 'william-password321') as {
+            userId: number
+        }
+        const userId = decoded.userId
+
+        const query = `DELETE FROM cartItems WHERE user_id = ?`
+        await database.run(query, [userId])
+
+        res.status(200).json({ message: 'Cart cleared successfully' })
+    } catch (error) {
+        console.error('Error clearing cart:', error)
+        res.status(500).json({ message: 'Server error' })
+    }
+})
+
 app.get('*', (_req, res) => {
     res.sendFile(path.join(__dirname, 'dist', 'index.html'))
 })

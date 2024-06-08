@@ -11,6 +11,7 @@ interface CartContextType {
     discount: number
     applyDiscount: (promoCode: string) => void
     isDiscountApplied?: boolean
+    clearCart: () => void
 }
 
 /* Adding default values to not handle in components */
@@ -23,7 +24,8 @@ const defaultCartContext: CartContextType = {
     getTotalCartItems: () => 0,
     discount: 0,
     applyDiscount: () => {},
-    isDiscountApplied: false
+    isDiscountApplied: false,
+    clearCart: () => {}
 }
 
 export const CartContext = createContext<CartContextType>(defaultCartContext)
@@ -157,6 +159,31 @@ const CartContextProvider = ({ children }: CartContextProps) => {
         return totalItems
     }
 
+    const clearCart = async () => {
+        setCartItems({})
+        if (localStorage.getItem('token')) {
+            // Om användaren är inloggad, rensa också cartItems i databasen
+            try {
+                const response = await fetch('/clearcart', {
+                    method: 'POST',
+                    headers: {
+                        token: `${localStorage.getItem('token')}`,
+                        'Content-Type': 'application/json'
+                    },
+                    body: ''
+                })
+                const data = await response.json()
+                if (response.ok) {
+                    console.log('Cart cleared successfully', data)
+                } else {
+                    console.error('Error clearing cart:', data)
+                }
+            } catch (error) {
+                console.error('Error clearing cart:', error)
+            }
+        }
+    }
+
     const [discount, setDiscount] = useState<number>(0)
     const [isDiscountApplied, setIsDiscountApplied] = useState<boolean>(false)
 
@@ -180,7 +207,8 @@ const CartContextProvider = ({ children }: CartContextProps) => {
         getTotalCartItems,
         discount,
         applyDiscount,
-        isDiscountApplied
+        isDiscountApplied,
+        clearCart
     }
 
     return (
