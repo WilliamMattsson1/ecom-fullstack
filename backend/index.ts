@@ -11,7 +11,7 @@ let database: Database
 ;(async () => {
     database = await sqlite.open({
         driver: sqlite3.Database,
-        filename: 'shop.sqlite'
+        filename: 'shop2.sqlite'
     })
 
     console.log('Connected to the SQLite database')
