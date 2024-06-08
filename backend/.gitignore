@@ -1,6 +1,5 @@
 node_modules
 *.js
 dist
-*.sqlite
-*.sqlite-journal
+
 *.txt
