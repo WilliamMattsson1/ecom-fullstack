@@ -6,6 +6,16 @@ import sqlite3 from 'sqlite3'
 import path from 'path'
 import jwt from 'jsonwebtoken'
 import bcrypt from 'bcrypt'
+import dotenv from 'dotenv'
+
+dotenv.config()
+const getJwtSecret = (): string => {
+    const secret = process.env.JWT_SECRET
+    if (!secret) {
+        throw new Error('JWT_SECRET is not defined in .env file')
+    }
+    return secret
+}
 
 let database: Database
 ;(async () => {
@@ -15,6 +25,7 @@ let database: Database
     })
 
     console.log('Connected to the SQLite database')
+    console.log('process.env.JWT_SECRET', process.env.JWT_SECRET)
 })()
 
 const app = express()
@@ -82,7 +93,7 @@ app.post('/login', async (req, res) => {
     if (!passwordCorrect) {
         return res.status(401).json({ message: 'Invalid password' })
     } else {
-        const token = jwt.sign({ userId: user.id }, 'william-password321')
+        const token = jwt.sign({ userId: user.id }, getJwtSecret())
         return res.status(200).json({
             message: 'Login successful (from backend)',
             token: token,
@@ -95,7 +106,7 @@ app.post('/cart/add', async (req, res) => {
     const { productId } = req.body
 
     const token = req.headers.token as string
-    const decoded = jwt.verify(token, 'william-password321') as {
+    const decoded = jwt.verify(token, getJwtSecret()) as {
         userId: number
     }
     const userId = decoded.userId
@@ -126,7 +137,7 @@ app.post('/cart/remove', async (req, res) => {
     const { productId } = req.body
 
     const token = req.headers.token as string
-    const decoded = jwt.verify(token, 'william-password321') as {
+    const decoded = jwt.verify(token, getJwtSecret()) as {
         userId: number
     }
     const userId = decoded.userId
@@ -159,7 +170,7 @@ app.post('/cart/remove', async (req, res) => {
 // Get the cart items for the logged in user
 app.post('/getcart', async (req, res) => {
     const token = req.headers.token as string
-    const decoded = jwt.verify(token, 'william-password321') as {
+    const decoded = jwt.verify(token, getJwtSecret()) as {
         userId: number
     }
     const userId = decoded.userId
@@ -191,7 +202,7 @@ app.post('/getcart', async (req, res) => {
 app.get('/checkadmin', async (req, res) => {
     const token = req.headers.token as string
     try {
-        const decoded = jwt.verify(token, 'william-password321') as {
+        const decoded = jwt.verify(token, getJwtSecret()) as {
             userId: number
         }
         const userId = decoded.userId
@@ -274,7 +285,7 @@ app.post('/createorder', async (req, res) => {
                 .status(401)
                 .json({ message: 'User must sign in to place orders' })
         }
-        const decoded = jwt.verify(token, 'william-password321') as {
+        const decoded = jwt.verify(token, getJwtSecret()) as {
             userId: number
         }
         const userId = decoded.userId
@@ -352,7 +363,7 @@ app.post('/clearcart', async (req, res) => {
                 .json({ message: 'User must sign in to clear cart' })
         }
 
-        const decoded = jwt.verify(token, 'william-password321') as {
+        const decoded = jwt.verify(token, getJwtSecret()) as {
             userId: number
         }
         const userId = decoded.userId
