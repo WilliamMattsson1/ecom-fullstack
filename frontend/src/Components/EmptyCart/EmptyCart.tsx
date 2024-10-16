@@ -2,17 +2,13 @@ import './EmptyCart.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCartShopping } from '@fortawesome/free-solid-svg-icons'
 import { Link } from 'react-router-dom'
-import { useState, useEffect } from 'react'
+import { useContext } from 'react'
+import { AuthContext } from '../../Context/AuthContext'
 
 const EmptyCart = () => {
-    const [isLoggedIn, setIsLoggedIn] = useState<boolean>(
-        localStorage.getItem('token') ? true : false
-    )
+    const { isLoggedIn } = useContext(AuthContext)
+    console.log('isLoggedIn:', isLoggedIn)
 
-    useEffect(() => {
-        setIsLoggedIn(localStorage.getItem('token') ? true : false)
-        console.log('Här körs useEffect i EmptyCart, isLoggedIn:', isLoggedIn)
-    }, [isLoggedIn])
     return (
         <>
             {isLoggedIn ? (

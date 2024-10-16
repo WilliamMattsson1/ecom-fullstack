@@ -1,35 +1,18 @@
 import NotFoungPage from '../NotFoundPage/NotFoundPage'
 import './AdminPage.css'
-import { useEffect, useState } from 'react'
+import { useContext, useState } from 'react'
 import logo from '../../assets/logo-admin.png'
 import AdminAddForm from '../../Components/AdminAddForm/AdminAddForm'
 import AdminEditProducts from '../../Components/AdminEditProducts/AdminEditProducts'
 import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faShop } from '@fortawesome/free-solid-svg-icons'
+import { AuthContext } from '../../Context/AuthContext'
 
 const AdminPage = () => {
-    const [isAdmin, setIsAdmin] = useState<boolean>(false)
-    useEffect(() => {
-        checkAdminStatus()
-    }, [])
-    const checkAdminStatus = async () => {
-        try {
-            const token = localStorage.getItem('token')
-            const response = await fetch('/checkadmin', {
-                method: 'GET',
-                headers: {
-                    token: token as string
-                }
-            })
-            const data = await response.json()
-            setIsAdmin(data.isAdmin)
-        } catch (error) {
-            console.error('Error checking admin status:', error)
-        }
-    }
-
-    const [view, setView] = useState('add') // 'add' eller 'edit'
+    const { isAdmin } = useContext(AuthContext)
+    const [view, setView] = useState('add')
+    console.log('isAdmin:', isAdmin)
 
     const handleAddProduct = () => {
         setView('add')

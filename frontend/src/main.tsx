@@ -3,6 +3,9 @@ import ReactDOM from 'react-dom/client'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import { ScrollProvider } from './Context/ScrollContext.tsx'
 import { ProductsProvider } from './Context/ProductsContext.tsx'
+import CartContextProvider from './Context/CartContext.tsx'
+import { AuthProvider } from './Context/AuthContext.tsx'
+
 import App from './App.tsx'
 import './index.css'
 import AboutPage from './Pages/AboutPage/AboutPage.tsx'
@@ -13,7 +16,6 @@ import CartPage from './Pages/CartPage/CartPage.tsx'
 import ProductDetailsPage from './Pages/ProductDetailsPage/ProductDetailsPage.tsx'
 import ContactPage from './Pages/ContactPage/ContactPage.tsx'
 import GenderProducts from './Pages/GenderProducts/GenderProducts.tsx'
-import CartContextProvider from './Context/CartContext.tsx'
 import AdminPage from './Pages/AdminPage/AdminPage.tsx'
 import CheckoutPage from './Pages/CheckoutPage/CheckoutPage.tsx'
 import ConfirmationPage from './Pages/ConfirmationPage/ConfirmationPage.tsx'
@@ -73,12 +75,14 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
     <React.StrictMode>
-        <ProductsProvider>
-            <CartContextProvider>
-                <ScrollProvider>
-                    <RouterProvider router={router} />
-                </ScrollProvider>
-            </CartContextProvider>
-        </ProductsProvider>
+        <AuthProvider>
+            <ProductsProvider>
+                <CartContextProvider>
+                    <ScrollProvider>
+                        <RouterProvider router={router} />
+                    </ScrollProvider>
+                </CartContextProvider>
+            </ProductsProvider>
+        </AuthProvider>
     </React.StrictMode>
 )
