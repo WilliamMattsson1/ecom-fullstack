@@ -90,7 +90,7 @@ const ConfirmationPage = () => {
                 </div>
 
                 <div className="btn-container">
-                    <Link to={'/'} onClick={scrollToTop}>
+                    <Link to={'/products'} onClick={scrollToTop}>
                         <button className="btn">Continue Shopping</button>
                     </Link>
                 </div>
